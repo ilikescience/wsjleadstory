@@ -1,0 +1,12 @@
+@import 'global/reset';
+@import 'global/color';
+@import 'global/layout';
+@import 'global/type';
+@import 'components/card';
+
+body {
+    font-family: var(--t--family-serif);
+    color: var(--c--coal);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}

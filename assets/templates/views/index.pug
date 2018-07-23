@@ -1,0 +1,12 @@
+extends ../layouts/default
+
+include ../components/card.pug
+
+block content
+    h1 Hello World
+    +card('small', 'horizontal', 'right')(
+        flashline='Design',
+        title='Why You’ll Want to Visit Rotterdam in 2018',
+        summary='The Netherlands’ “second city” is attracting a fleet of designers, artists and architects who are reshaping the Dutch city into an epicenter of urban innovation.',
+        image='images/5.jpg'
+    )

@@ -1,0 +1,49 @@
+.card {
+    display: flex;
+}
+
+.card--horizontal {
+    flex-direction: row;
+}
+
+.card--vertical {
+    flex-direction: column;
+}
+
+.card--small {
+
+    &.card--right {
+        & .card--text {
+            flex: 0 1 auto;
+            margin-right: var(--l--space-m);
+        }
+
+        & .card--image {
+            flex: 1 0 150px;
+        }
+    }
+
+    &.card--top {
+        & .card--text {
+            margin-top: var(--l--space-m);
+        }
+
+        & .card--image {
+            max-width: 240px;
+            max-height: 240px;
+        }
+
+        & img {
+            width: 100%;
+            height: auto;
+        }
+    }
+}
+
+.card--left {
+    flex-direction: row-reverse;
+}
+
+.card--top {
+    flex-direction: column-reverse;
+}
