@@ -1,11 +1,34 @@
-mixin card(size, direction, media)
-    .card(class='card--' + size + ' card--' + direction + ' card--' + media)
+include icon.pug
+
+mixin card(inputData)
+    - var data = Object.assign({size: 'medium', orientation: 'vertical', mediaPlacement: 'top', actions: true}, inputData)
+    .card(class='card--' + data.size + ' card--' + data.orientation + ' card--' + data.mediaPlacement)
         .card--text
-            if attributes.flashline
-                .t--family-sansCondensed.t--size-xs.t--weight-light.t--transform-uppercase.t--kering-m.l--margin-bottom-s #{attributes.flashline}
-            .t--family-condensed.t--size-l.l--margin-bottom-m #{attributes.title}
-            if attributes.summary
-                .t--family-serif.t--size-s.l--margin-bottom-l.t--color-nickel #{attributes.summary}
-        if attributes.image
+            if data.flashline
+                .card--flashline.t--family-sansCondensed.t--size-xs.t--weight-light.t--transform-uppercase.t--kering-m.l--margin-bottom-s #{data.flashline}
+            .card--headline.t--family-condensed.l--margin-bottom-m(class=`t--size-${data.size.charAt(0)} ${data.size === 'small' ? 't--family-serif t--weight-medium' : 't--family-condensed'}`) #{data.title}
+            if data.summary
+                .card--summary.t--family-serif.t--size-s #{data.summary}
+            if data.byline || data.timestamp
+                .card--byline.t--family-sansCondensed.t--size-xs.t--color-nickel.t--weight-light.l--margin-top-m
+                    if data.timestamp 
+                        | #{data.timestamp}
+                    if data.byline && data.timestamp 
+                        | &nbsp;·&nbsp;
+                    if data.byline
+                        | by #{data.byline}
+        if data.image
             .card--image
-                img(src=attributes.image)
+                img(src=data.image)
+        if data.actions
+            .card--actions
+                .card--actions-action
+                    +icon('bookmark')
+                    | Save
+                .card--actions-action
+                    +icon('share')
+                    | Share
+                .card--actions-action
+                    | Comment
+                    +icon('comments')
+

@@ -15,9 +15,12 @@
 @custom-media --8u (width <= 640px) and (width > 350px);
 @custom-media --4u (width <= 375px);
 
-.l--container {
+.l--grid {
+    display: grid;
     margin: 0 auto;
     max-width: var(--l--grid-width);
+    grid-template-columns: minmax(200px, 2fr) minmax(300px, 3fr) minmax(200px, 2fr);
+    grid-gap: var(--l--space-xl);
 }
 
 .l--margin-xl { margin: var(--l--space-xl); }

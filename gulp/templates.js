@@ -1,7 +1,6 @@
 const browserSync = require('browser-sync');
 const path = require('path');
 
-
 module.exports = function(gulp, plugins) {
     const paths = {
         'watch': [
@@ -15,6 +14,9 @@ module.exports = function(gulp, plugins) {
         ]
     };
 
+    console.log(plugins);
+
+
 
     gulp.task(
         'build:templates',
@@ -25,6 +27,7 @@ module.exports = function(gulp, plugins) {
                 .on('error', plugins.notify.onError(function(err) {
                     return err.message + ' in ' + err.fileName + ' at line ' + err.lineNumber;
                 }))
+                .pipe(plugins.injectSvg({ base: '/build' }))
                 .pipe(gulp.dest(gulp.outputPath))
                 .pipe(browserSync.reload({'stream': true}))
                 .pipe(plugins.notify({'message': 'Pug compilation complete', 'onLast': true}));

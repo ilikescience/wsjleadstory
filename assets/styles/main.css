@@ -3,6 +3,7 @@
 @import 'global/layout';
 @import 'global/type';
 @import 'components/card';
+@import 'components/icon';
 
 body {
     font-family: var(--t--family-serif);

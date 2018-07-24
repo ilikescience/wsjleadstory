@@ -5,6 +5,7 @@ module.exports = function(gulp) {
         'watch:templates',
         'watch:images',
         'watch:scripts',
-        'watch:fonts'
+        'watch:fonts',
+        'watch:icons'
     ]);
 };

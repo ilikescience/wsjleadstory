@@ -129,11 +129,11 @@
     --t--family-serif: 'Exchange';
     --t--family-sans: 'Retina';
     --t--family-sans-condensed: 'Retina Narrow';
-    --t--size-xl: 56px;
-    --t--size-l: 30px;
+    --t--size-xl: 40px;
+    --t--size-l: 32px;
     --t--size-m: 22px;
     --t--size-s: 16px;
-    --t--size-xs: 12px;
+    --t--size-xs: 14px;
 }
 
 .t--family-condensed { font-family: var(--t--family-condensed); }

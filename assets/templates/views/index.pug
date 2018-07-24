@@ -3,10 +3,38 @@ extends ../layouts/default
 include ../components/card.pug
 
 block content
-    h1 Hello World
-    +card('small', 'horizontal', 'right')(
-        flashline='Design',
-        title='Why You’ll Want to Visit Rotterdam in 2018',
-        summary='The Netherlands’ “second city” is attracting a fleet of designers, artists and architects who are reshaping the Dutch city into an epicenter of urban innovation.',
-        image='images/5.jpg'
-    )
+    .l--grid.l--margin-top-xl
+        +card({
+            size : 'large',
+            title : 'Verizon Shares Get Lift From Solid Subscriber Growth',
+            summary : 'Verizon bolstered its base of wireless-phone subscribers in the second quarter as industry-wide promotions died down and the company avoided the deal making that is reshaping its rivals.',
+            byline : "Matthew Ström"
+        })
+        +card({
+            image : 'https://si.wsj.net/public/resources/images/S1-AS120_greece_OR_20180724040157.jpg',
+            title : 'Scores Killed as Greek Wildfires Devastate Resorts Near Athens',
+            summary : 'Uncontrolled wildfires raged through resort areas near Greece’s capital, killing at least 60 people and injuring dozens more, in the country’s deadliest fire season in more than a decade.',
+            byline : 'Nektaria Stamouli'
+        })
+        +card({
+            title : 'Apple Vulnerable in U.S.-China Trade Showdown',
+            summary : 'China has been integral to Apple’s remarkable success. But the iPhone is a Chinese export—one that could be subject to tariffs in an escalating trade dispute with the U.S.',
+            byline : "Matthew Ström"
+        })
+        +card({
+            title : 'Verizon Shares Get Lift From Solid Wireless Growth',
+            summary : 'Verizon bolstered its base of wireless-phone subscribers in the second quarter as industry-wide promotions died down and the company avoided the deal making that is reshaping its rivals.',
+            timestamp : '16 minutes ago',
+            byline : "Matthew Ström"
+        })
+        +card({
+            title : 'Silicon Valley to Big Oil: We Can Manage Your Data Better Than You',
+            summary : 'Tech companies are pitching their cloud and artificial intelligence expertise to oil and gas producers, but some worry such deals will foster new competitors in a more data-driven energy industry.',
+            byline : "Matthew Ström"
+        })
+        +card({
+            size: 'small',
+            title : 'Eli Lilly to Offer Minority Stake in Animal-Health Business',
+            summary : 'Eli Lilly said it is taking public a minority ownership stake in its Elanco Animal Health business, allowing the company ‘even greater focus on the human pharmaceutical business.’',
+            byline : "Matthew Ström"
+        })
