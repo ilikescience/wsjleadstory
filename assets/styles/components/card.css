@@ -20,12 +20,26 @@
     margin: var(--l--space-m) 0;
     padding: var(--l--space-m) 0;
     border-top: 1px solid var(--c--snow);
+    justify-content: space-between;
 
     & .icon {
         width: 24px;
         height: 24px;
         fill: var(--c--silver);
     }
+}
+
+.card--actions-action {
+    display: flex;
+    align-items: center;
+    flex: 0 1 auto;
+    margin-right: 1em;
+}
+
+.card--actions-action:last-child {
+    flex: 1 0 auto;
+    justify-content: flex-end;
+    margin-right: 0;
 }
 
 .card--small {
@@ -44,6 +58,10 @@
     & .card--headline,
     & .card--summary {
         display: inline;
+    }
+
+    & .card--headline {
+        margin-right: 0.5em;
     }
 }
 

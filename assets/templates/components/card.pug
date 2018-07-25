@@ -8,9 +8,9 @@ mixin card(inputData)
                 .card--flashline.t--family-sansCondensed.t--size-xs.t--weight-light.t--transform-uppercase.t--kering-m.l--margin-bottom-s #{data.flashline}
             .card--headline.t--family-condensed.l--margin-bottom-m(class=`t--size-${data.size.charAt(0)} ${data.size === 'small' ? 't--family-serif t--weight-medium' : 't--family-condensed'}`) #{data.title}
             if data.summary
-                .card--summary.t--family-serif.t--size-s #{data.summary}
+                .card--summary.t--family-serif.t--size-s.t--color-nickel #{data.summary}
             if data.byline || data.timestamp
-                .card--byline.t--family-sansCondensed.t--size-xs.t--color-nickel.t--weight-light.l--margin-top-m
+                .card--byline.t--family-sansCondensed.t--size-s.t--weight-light.l--margin-top-m.t--color-nickel
                     if data.timestamp 
                         | #{data.timestamp}
                     if data.byline && data.timestamp 
@@ -24,11 +24,11 @@ mixin card(inputData)
             .card--actions
                 .card--actions-action
                     +icon('bookmark')
-                    | Save
+                    .card--actions-label.t--family-sansCondensed.t--size-xs.t--color-nickel.t--weight-light Save
                 .card--actions-action
                     +icon('share')
-                    | Share
+                    .card--actions-label.t--family-sansCondensed.t--size-xs.t--color-nickel.t--weight-light Share
                 .card--actions-action
-                    | Comment
+                    .card--actions-label.t--family-sansCondensed.t--size-xs.t--color-nickel.t--weight-light Comment
                     +icon('comments')
 
