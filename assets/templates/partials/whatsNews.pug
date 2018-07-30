@@ -1,0 +1,17 @@
+include ../components/card
+
+.whatsNews.c--bg-glow.l--padding-m
+    .whatsNews--title.t--align-center.l--padding-m.l--padding-bottom-s.l--margin-bottom-l 
+        .whatsNews--title-text.t--size-m What's News
+        .whatsNews--title-icon
+            +icon('fullscreen')
+    - var n = 0;
+    while n < 10
+        +card(locals.articles[Math.floor(Math.random() * 100)],
+                    {
+                    size: 's',
+                    actions: false,
+                    image: false,
+                    byline: false
+                })
+        - n++

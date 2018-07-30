@@ -1,0 +1,30 @@
+include ../components/ticker
+
+.marketData.c--bg-jet
+    .marketData--inner.l--padding-top-s.l--padding-bottom-s
+        +ticker()
+        +ticker({
+            symbol: 'S&P 500',
+            value: 2815.28,
+            change: -0.09 
+        })
+        +ticker({
+            symbol: 'Nasdaq',
+            value: 7699.72,
+            change: -0.49 
+        })
+        +ticker({
+            symbol: 'U.S. 10 Yr',
+            value: '-8/32 Yield',
+            change: -2.986 
+        })
+        +ticker({
+            symbol: 'Crude Oil',
+            value: 70.25,
+            change: 2.27
+        })
+        +ticker({
+            symbol: 'Euro',
+            value: 1.1700,
+            change: 0.38 
+        })

@@ -1,34 +1,49 @@
-include icon.pug
+include icon
+include cardAction
 
-mixin card(inputData)
-    - var data = Object.assign({size: 'medium', orientation: 'vertical', mediaPlacement: 'top', actions: true}, inputData)
-    .card(class='card--' + data.size + ' card--' + data.orientation + ' card--' + data.mediaPlacement)
-        .card--text
-            if data.flashline
-                .card--flashline.t--family-sansCondensed.t--size-xs.t--weight-light.t--transform-uppercase.t--kering-m.l--margin-bottom-s #{data.flashline}
-            .card--headline.t--family-condensed.l--margin-bottom-m(class=`t--size-${data.size.charAt(0)} ${data.size === 'small' ? 't--family-serif t--weight-medium' : 't--family-condensed'}`) #{data.title}
-            if data.summary
-                .card--summary.t--family-serif.t--size-s.t--color-nickel #{data.summary}
-            if data.byline || data.timestamp
-                .card--byline.t--family-sansCondensed.t--size-s.t--weight-light.l--margin-top-m.t--color-nickel
-                    if data.timestamp 
-                        | #{data.timestamp}
-                    if data.byline && data.timestamp 
-                        | &nbsp;·&nbsp;
-                    if data.byline
-                        | by #{data.byline}
-        if data.image
-            .card--image
-                img(src=data.image)
+mixin card(inputData, params)
+    -
+        var data = Object.assign({
+            alignment: 'left',
+            size: 'm',
+            orientation: 'vertical',
+            mediaPlacement: 'top',
+            actions: true,
+            commentCount: Math.floor(Math.random() * 100),
+            storyType : 'news'
+            }, inputData, params)
+    - var headlineSize = `t--size-${data.size}`
+    - var headlineFont = data.size === 's' ? 't--family-serif' : 't--family-condensed';
+    - var headlineWeight = data.storyType === 'news' || data.size === 's' ? 't--weight-bold' : 't--weight-normal';
+    - var headlineStyle = data.storyType === 'opinion' ? 't--style-italic' : '';
+    .card(class='card--' + data.size + ' card--' + data.orientation + ' card--' + data.mediaPlacement data-sbid=data.id)
+        .card--content.l--padding-bottom-m
+            .card--text(class=`${data.alignment === 'center' ? 'card--text-center' : 'card--text-left' }`)
+                if data.flashline
+                    .card--flashline.t--family-sansCondensed.t--size-xs.t--weight-light.t--transform-uppercase.t--kering-m.l--margin-bottom-s #{data.flashline}
+                .card--headline.t--family-condensed.l--margin-bottom-m(class=`${headlineSize} ${headlineFont} ${headlineWeight} ${headlineStyle}`) #{data.title}
+                if data.mediaPlacement === 'middle'
+                    .card--image.l--margin-top-m.l--margin-bottom-m
+                        img(src=data.image)
+                if data.summary
+                    .card--summary.t--family-serif.t--size-s.t--color-nickel #{data.summary}
+                if data.byline || data.timestamp
+                    .card--byline.t--family-sansCondensed.t--size-s.t--weight-light.l--margin-top-m.t--color-nickel
+                        if data.byline
+                            if data.avatar
+                                .card--byline-avatar
+                                    img(src=data.avatar)
+                            .card--byline-attribution by #{data.byline}
+                        if data.byline && data.timestamp 
+                            .card--byline-divider &nbsp;·&nbsp;
+                        if data.timestamp 
+                            .card--byline-timestamp #{data.timestamp}
+            if data.image && data.mediaPlacement !== 'middle'
+                .card--image
+                    img(src=data.image)
         if data.actions
-            .card--actions
-                .card--actions-action
-                    +icon('bookmark')
-                    .card--actions-label.t--family-sansCondensed.t--size-xs.t--color-nickel.t--weight-light Save
-                .card--actions-action
-                    +icon('share')
-                    .card--actions-label.t--family-sansCondensed.t--size-xs.t--color-nickel.t--weight-light Share
-                .card--actions-action
-                    .card--actions-label.t--family-sansCondensed.t--size-xs.t--color-nickel.t--weight-light Comment
-                    +icon('comments')
+            .card--actions.l--margin-top-s.l--padding-top-s
+                +cardAction()
+                +cardAction({icon: 'share', label: 'Share'})
+                +cardAction({iconAlignment: 'right', icon: 'comments', label: data.commentCount})
 

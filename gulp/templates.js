@@ -1,3 +1,4 @@
+var fs = require('fs');
 const browserSync = require('browser-sync');
 const path = require('path');
 
@@ -23,6 +24,11 @@ module.exports = function(gulp, plugins) {
         'compiles the pug templates to the build folder',
         function() {
             return gulp.src(paths.build)
+                .pipe(plugins.data( function(file) {
+                    return JSON.parse(
+                    fs.readFileSync('./data.json')
+                    );
+                } ))
                 .pipe(plugins.pug({'basedir': path.join(gulp.inputPath, 'templates')}))
                 .on('error', plugins.notify.onError(function(err) {
                     return err.message + ' in ' + err.fileName + ' at line ' + err.lineNumber;

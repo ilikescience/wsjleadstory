@@ -1,0 +1,27 @@
+.nav {
+    border-bottom: 1px solid var(--c--smoke);
+}
+.nav--inner {
+    margin: 0 auto;
+    max-width: var(--l--grid-width);
+}
+
+.nav--logo {
+    display: flex;
+    justify-content: center;
+
+    & svg {
+        width: 560px;
+        height: 60px;
+    }
+}
+
+.nav--sections,
+.nav--edition {
+    display: flex;
+    justify-content: center;
+}
+
+.nav--edition-item:not(:last-child) {
+    border-right: 1px solid var(--c--smoke);
+}

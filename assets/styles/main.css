@@ -2,8 +2,14 @@
 @import 'global/color';
 @import 'global/layout';
 @import 'global/type';
+@import 'components/marketData';
+@import 'components/ticker';
+@import 'components/nav';
 @import 'components/card';
+@import 'components/cardAction';
 @import 'components/icon';
+@import 'components/whatsNews';
+@import 'components/strap';
 
 body {
     font-family: var(--t--family-serif);

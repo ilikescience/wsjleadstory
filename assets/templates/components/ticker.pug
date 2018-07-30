@@ -1,0 +1,12 @@
+mixin ticker(inputData)
+    -
+        var data = Object.assign({
+            symbol: 'DJIA',
+            value: '25451.06',
+            change: -0.30
+            },inputData)
+    .ticker.t--color-white.t--family-sansCondensed
+        .ticker--symbol.l--margin-right-m= data.symbol
+        .ticker--value.l--margin-right-m.t--weight-medium.t--tabular-numbers= data.value
+        .ticker--change.l--margin-right-s.t--tabular-numbers(class=data.change > 0 ? 't--color-green' : 't--color-red') #{data.change}%
+        .ticker--indicator(class=data.change > 0 ? 't--color-green' : 't--color-red')= data.change > 0 ? '▲' : '▼'

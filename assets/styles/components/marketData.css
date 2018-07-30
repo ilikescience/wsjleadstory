@@ -1,0 +1,6 @@
+.marketData--inner {
+    display: flex;
+    margin: 0 auto;
+    max-width: var(--l--grid-width);
+    justify-content: space-between;
+}

@@ -19,7 +19,7 @@
     display: grid;
     margin: 0 auto;
     max-width: var(--l--grid-width);
-    grid-template-columns: minmax(200px, 2fr) minmax(300px, 3fr) minmax(200px, 2fr);
+    grid-template: 'col1 col2 col3' 'col1 col2 col3' / 3fr 7fr 3fr;
     grid-gap: var(--l--space-xl);
 }
 
@@ -78,3 +78,15 @@
 .l--padding-right-s { padding-right: var(--l--space-s); }
 .l--padding-bottom-s { padding-bottom: var(--l--space-s); }
 .l--padding-left-s { padding-left: var(--l--space-s); }
+
+/* stylelint-disable */
+.l--visuallyhidden { 
+    /* https://snook.ca/archives/html_and_css/hiding-content-for-accessibility */
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+    clip: rect(1px, 1px, 1px, 1px);
+}
+/* stylelint-enable */

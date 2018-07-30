@@ -7,4 +7,20 @@
     --c--smoke: #ebebeb;
     --c--snow: #f4f4f4;
     --c--white: #fff;
+    --c--red: #ec0404;
+    --c--green: #0b8a00;
+    --c--glow: #fffaf1;
+    --c--blue: #0274b6;
 }
+
+.c--bg-jet { background: var(--c--jet); }
+.c--bg-coal { background: var(--c--coal); }
+.c--bg-nickel { background: var(--c--nickel); }
+.c--bg-moon { background: var(--c--moon); }
+.c--bg-silver { background: var(--c--silver); }
+.c--bg-smoke { background: var(--c--smoke); }
+.c--bg-snow { background: var(--c--snow); }
+.c--bg-white { background: var(--c--white); }
+.c--bg-red { background: var(--c--red); }
+.c--bg-green { background: var(--c--green); }
+.c--bg-glow { background: var(--c--glow); }

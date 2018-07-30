@@ -37,6 +37,24 @@
 @font-face {
     font-family: 'Retina Narrow';
     src:
+        url(../fonts/RetinaNarr-Medium.woff2) format('woff2'),
+        url(../fonts/RetinaNarr-Medium.woff) format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Retina Narrow';
+    src:
+        url(../fonts/RetinaNarr-MediumItalic.woff2) format('woff2'),
+        url(../fonts/RetinaNarr-MediumItalic.woff) format('woff');
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Retina Narrow';
+    src:
         url(../fonts/RetinaNarr-Book.woff2) format('woff2'),
         url(../fonts/RetinaNarr-Book.woff) format('woff');
     font-weight: 400;
@@ -68,6 +86,15 @@
         url(../fonts/RetinaNarr-LightItalic.woff) format('woff');
     font-weight: 300;
     font-style: italic;
+}
+
+@font-face {
+    font-family: 'Escrow Condensed';
+    src:
+        url(../fonts/EscrowCond.woff2) format('woff2'),
+        url(../fonts/EscrowCond.woff) format('woff');
+    font-weight: 400;
+    font-style: normal;
 }
 
 @font-face {
@@ -144,6 +171,9 @@
 .t--weight-light { font-weight: 300; }
 .t--weight-normal { font-weight: 400; }
 .t--weight-medium { font-weight: 500; }
+.t--weight-bold { font-weight: 700; }
+
+.t--style-italic { font-style: italic; }
 
 .t--transform-uppercase { text-transform: uppercase; }
 
@@ -157,6 +187,8 @@
 .t--color-smoke { color: var(--c--smoke); }
 .t--color-snow { color: var(--c--snow); }
 .t--color-white { color: var(--c--white); }
+.t--color-red { color: var(--c--red); }
+.t--color-green { color: var(--c--green); }
 
 .t--size-xl {
     font-size: var(--t--size-xl);
@@ -184,3 +216,5 @@
 }
 
 .t--kering-m { letter-spacing: 0.5px; }
+
+.t--tabular-numbers { font-feature-settings: 'tnum'; }

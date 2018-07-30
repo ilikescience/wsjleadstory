@@ -1,0 +1,13 @@
+.strap {
+    display: flex;
+    border-bottom: 1px solid var(--c--smoke);
+    border-top: 1px solid var(--c--jet);
+}
+
+.strap--title {
+    flex: 1 0 auto;
+}
+
+.strap--arrow {
+    flex: 0 1 auto;
+}
