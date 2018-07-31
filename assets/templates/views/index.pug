@@ -4,61 +4,37 @@ include ../components/card
 include ../components/strap
 
 block content
-    - var articles = locals.articles
-    include ../partials/marketData
+    - var news = locals.news
+    - var opinion = locals.opinion
+    include ../partials/marketDataStrip
     include ../partials/nav
     .l--grid.l--margin-top-xl
         include ../partials/whatsNews
         .column
-            +card(articles[0],
+            +card(news[0],
                 {
                 size: 'xl',
                 mediaPlacement : 'middle'
             })
-            +card(locals.articles[1],
+            +card(locals.news[1],
                 {
                 size: 'l',
                 mediaPlacement : 'middle'
             })
-            +card({
-                storyType: 'life',
-                alignment: 'center',
-                image : 'https://si.wsj.net/public/resources/images/B3-BF248_PHONE_FR_20180724143716.jpg',
-                flashline: 'Gear & Gadgets',
-                title : 'Should I Sanitize My Smartphone?',
-                summary : 'For all the grime that gets on our devices, the occasional wipe down might not be enough. These glowing gadgets give them a deeper clean.'
-                })
         .column
-            +card({
-                title : 'GM Posts Higher Profit, Lowers Outlook Amid Metals Costs',
-                summary : 'General Motors’ second-quarter net income rose amid strong results from its in-house finance arm and China, but the auto maker lowered its 2018 profit outlook in the wake of U.S. tariffs on steel and aluminum.',
-                timestamp : '16 minutes ago',
-                byline : "Mike Colias",
-                actions: false
-            })
-            +card({
-                flashline: 'Tech',
-                title : 'Silicon Valley to Big Oil: We Can Manage Your Data Better Than You',
-                summary : 'Tech companies are pitching their cloud and artificial intelligence expertise to oil and gas producers, but some worry such deals will foster new competitors in a more data-driven energy industry.',
-                byline : "Matthew Ström",
-                actions: false
-            })
+            +card(news[2], {image: false, actions: false})
+            +card(news[3], {image: false, actions: false})
+            +card(news[4], {image: false, actions: false})
             +strap('Opinion')
-            +card({
-                storyType: 'opinion',
-                size: 'm',
-                title : 'McCaskill’s Intimidation Game',
-                summary : 'The Missouri senator runs attack ads not on her opponent but one of his supporters.',
-                byline : "Kimberley A. Strassel",
-                avatar: 'https://si.wsj.net/public/resources/images/BN-SA604_STRASS_AM_20170209092845.jpg',
+            +card(opinion[0], {
+                image: false, 
                 actions: false
             })
-            +card({
-                storyType: 'opinion',
-                size: 'm',
-                title : 'Corruption in Mexico’s Anticorruption Party',
-                summary : 'Electoral officials fine AMLO’s Morena $10.5 million for campaign violations.',
-                byline : "Mary Anastasia O’Grady",
-                avatar: 'https://s.wsj.net/img/renocol_MaryOGrady.gif',
+            +card(opinion[1], {
+                image: false, 
+                actions: false
+            })
+            +card(opinion[2], {
+                image: false, 
                 actions: false
             })

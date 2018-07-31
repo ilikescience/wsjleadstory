@@ -1,5 +1,5 @@
 :root {
-    --l--grid-width: 1260px;
+    --l--grid-width: 1300px;
     --l--space-xl: 40px;
     --l--space-l: 20px;
     --l--space-m: 10px;
@@ -20,6 +20,7 @@
     margin: 0 auto;
     max-width: var(--l--grid-width);
     grid-template: 'col1 col2 col3' 'col1 col2 col3' / 3fr 7fr 3fr;
+    align-items: start;
     grid-gap: var(--l--space-xl);
 }
 

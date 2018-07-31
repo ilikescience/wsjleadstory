@@ -4,3 +4,16 @@
     max-width: var(--l--grid-width);
     justify-content: space-between;
 }
+
+.marketDataCard--graph svg {
+    width: 100%;
+}
+
+.marketDataCard {
+    border-bottom: 1px solid var(--c--smoke);
+}
+
+.marketDataCard--table table {
+    width: 100%;
+    table-layout: auto;
+}

@@ -12,11 +12,13 @@
 
 .whatsNews--title {
     display: flex;
-    position: relative;
+    position: sticky;
+    top: 0;
     justify-content: flex-end;
     border-width: 1px 1px 0;
     border-style: solid;
     border-color: rgba(0, 0, 0, 0.4);
+    background: linear-gradient(to bottom, #fffaf1ff 0%, #fffaf1ff 80%, #fffaf100 100%);
 
     &::before,
     &::after {
@@ -86,6 +88,15 @@
         & .card {
             margin: 0 auto var(--l--space-l);
             max-width: var(--expanded-size);
+        }
+
+        & .marketDataCard {
+            margin: 0 auto var(--l--space-l);
+            max-width: var(--expanded-size);
+
+            & .t--size-xs {
+                font-size: 1em;
+            }
         }
     }
 }

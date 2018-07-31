@@ -10,12 +10,12 @@ mixin card(inputData, params)
             mediaPlacement: 'top',
             actions: true,
             commentCount: Math.floor(Math.random() * 100),
-            storyType : 'news'
+            storyType : 'News'
             }, inputData, params)
     - var headlineSize = `t--size-${data.size}`
     - var headlineFont = data.size === 's' ? 't--family-serif' : 't--family-condensed';
-    - var headlineWeight = data.storyType === 'news' || data.size === 's' ? 't--weight-bold' : 't--weight-normal';
-    - var headlineStyle = data.storyType === 'opinion' ? 't--style-italic' : '';
+    - var headlineWeight = data.storyType === 'News' || data.size === 's' ? 't--weight-bold' : 't--weight-normal';
+    - var headlineStyle = data.storyType === 'Opinion' ? 't--style-italic' : '';
     .card(class='card--' + data.size + ' card--' + data.orientation + ' card--' + data.mediaPlacement data-sbid=data.id)
         .card--content.l--padding-bottom-m
             .card--text(class=`${data.alignment === 'center' ? 'card--text-center' : 'card--text-left' }`)

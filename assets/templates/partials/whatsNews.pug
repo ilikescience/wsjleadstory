@@ -5,9 +5,11 @@ include ../components/card
         .whatsNews--title-text.t--size-m What's News
         .whatsNews--title-icon
             +icon('fullscreen')
+    .whatsNews--marketData
+        include marketDataCard
     - var n = 0;
     while n < 10
-        +card(locals.articles[Math.floor(Math.random() * 100)],
+        +card(locals.news[Math.floor(Math.random() * 100)],
                     {
                     size: 's',
                     actions: false,

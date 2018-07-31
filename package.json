@@ -38,6 +38,8 @@
     "gulp-data": "^1.3.1",
     "gulp-inject-svg": "^0.1.18",
     "gulp-rename": "^1.4.0",
+    "gulp-run": "^1.7.1",
+    "gulp-shell": "^0.6.5",
     "gulp-svgmin": "^1.2.4",
     "gulp-svgstore": "^6.1.1",
     "stylelint": "^9.2.0",

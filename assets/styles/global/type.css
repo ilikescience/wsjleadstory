@@ -178,6 +178,7 @@
 .t--transform-uppercase { text-transform: uppercase; }
 
 .t--align-center { text-align: center; }
+.t--align-right { text-align: right; }
 
 .t--color-jet { color: var(--c--jet); }
 .t--color-coal { color: var(--c--coal); }

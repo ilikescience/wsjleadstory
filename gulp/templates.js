@@ -15,15 +15,14 @@ module.exports = function(gulp, plugins) {
         ]
     };
 
-    console.log(plugins);
-
-
-
     gulp.task(
         'build:templates',
         'compiles the pug templates to the build folder',
         function() {
             return gulp.src(paths.build)
+                .pipe(plugins.shell([
+                  'npm run getData'
+                ]))
                 .pipe(plugins.data( function(file) {
                     return JSON.parse(
                     fs.readFileSync('./data.json')
