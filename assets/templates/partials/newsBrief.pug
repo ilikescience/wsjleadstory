@@ -1,0 +1,60 @@
+include ../components/card
+
+.newsBrief.l--padding-right-l
+    +strap('News Brief')
+    .newsBrief--title.l--margin-top-m
+        .newsBrief--title-icon
+            <svg class="icon" viewBox="0 0 24 24">
+                <path d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1a1 1 0 0 1 2 0v2a1 1 0 0 1-2 0V1zM11 21a1 1 0 0 1 2 0v2a1 1 0 0 1-2 0v-2zM3.513 4.927a1 1 0 0 1 1.414-1.414l1.42 1.42a1 1 0 0 1-1.414 1.414l-1.42-1.42zM17.653 19.067a1 1 0 0 1 1.414-1.414l1.42 1.42a1 1 0 0 1-1.414 1.414l-1.42-1.42zM1 13a1 1 0 0 1 0-2h2a1 1 0 0 1 0 2H1zM21 13a1 1 0 0 1 0-2h2a1 1 0 0 1 0 2h-2zM4.927 20.487a1 1 0 1 1-1.414-1.414l1.42-1.42a1 1 0 1 1 1.414 1.414l-1.42 1.42zM19.067 6.347a1 1 0 0 1-1.414-1.414l1.42-1.42a1 1 0 0 1 1.414 1.414l-1.42 1.42z"/>
+            </svg>
+        .newsBrief--title-text
+            .newsBrief--greeting.t--family-sansCondensed.l--margin-bottom-s Good Afternoon
+            .newsBrief--title.t--family-sans.t--size-xs.t--weight-light Here’s what we’re watching as the U.S. business day continues.
+    .newsBrief--stories.l--margin-top-l
+        .t--family-sansCondensed.t--size-xs.t--weight-light.t--transform-uppercase.t--kering-m.l--margin-bottom-s Business &amp; Finance
+        +card(locals.categories.Business[0],
+            {
+            size: 's',
+            actions: false,
+            image: false,
+            byline: false,
+            flashline: false
+        })
+        .t--family-sansCondensed.t--size-xs.t--weight-light.t--transform-uppercase.t--kering-m.l--margin-bottom-s  Markets
+        +card(locals.categories.Markets[0],
+            {
+            size: 's',
+            actions: false,
+            image: false,
+            byline: false,
+            flashline: false,
+            trending: true
+        })
+        .t--family-sansCondensed.t--size-xs.t--weight-light.t--transform-uppercase.t--kering-m.l--margin-bottom-s  U.S. News
+        +card(locals.categories.US[0],
+            {
+            size: 's',
+            actions: false,
+            image: false,
+            byline: false,
+            flashline: false
+        })
+        a(href="/article2.html").button.l--margin-bottom-l Read the full Brief
+        .t--family-sansCondensed.t--size-xs.t--weight-light.t--transform-uppercase.t--kering-m.l--margin-bottom-s  Because you read Tech
+        +card(locals.categories.Tech[0],
+            {
+            size: 's',
+            actions: false,
+            image: false,
+            byline: false,
+            flashline: false
+        })
+        .t--family-sansCondensed.t--size-xs.t--weight-light.t--transform-uppercase.t--kering-m.l--margin-bottom-s  Because you read WSJ. Magazine
+        +card(locals.magazine[0],
+            {
+            size: 's',
+            actions: false,
+            image: false,
+            byline: false,
+            flashline: false
+        })

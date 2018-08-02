@@ -1,0 +1,69 @@
+extends ../layouts/default
+
+include ../components/card
+include ../components/strap
+
+block content
+    - var news = locals.news
+    - var opinion = locals.opinion
+    include ../partials/marketDataStrip
+    include ../partials/nav
+    .l--grid-alt.l--margin-top-xl
+        include ../partials/newsBrief
+        .l--grid-2
+            +strap('Top Stories')
+            +card(news[0],
+                {
+                size: 'xl',
+                image: false
+            })
+            +card(news[1],
+                {
+                size: 'l',
+                image: false,
+            })
+            +card(news[2],
+                {
+                size: 'l',
+                image: false,
+            })
+            +card(news[4], {
+                mediaPlacement: 'first',
+                orientation: 'horizontal',
+                actions: false,
+                summary: false
+            })
+            +card(news[5], {
+                mediaPlacement: 'first',
+                orientation: 'horizontal',
+                actions: false,
+                summary: false
+            })
+            +card(news[6], {
+                mediaPlacement: 'first',
+                orientation: 'horizontal',
+                actions: false,
+                summary: false
+            })
+        .l--grid-3
+            +card(life[1], {size: 'l'})
+            +strap('Opinion')
+            +card(opinion[0], {
+                size: 'l',
+                image: false, 
+                actions: false
+            })
+            +card(opinion[1], {
+                image: false, 
+                actions: false
+            })
+            +card(opinion[2], {
+                image: false, 
+                actions: false
+            })
+        .l--grid-4
+            +strap('U.S. News')
+            +card(news[7], {size: 'l', actions: true, orientation: 'horizontal'})
+            +card(news[8], {size: 'l', actions: true, orientation: 'horizontal'})
+            +card(news[9], {size: 'l', actions: true, orientation: 'horizontal'})
+    include ../components/fadeOut

@@ -7,16 +7,23 @@ mixin card(inputData, params)
             alignment: 'left',
             size: 'm',
             orientation: 'vertical',
-            mediaPlacement: 'top',
+            mediaPlacement: 'first',
             actions: true,
             commentCount: Math.floor(Math.random() * 100),
-            storyType : 'News'
+            storyType : 'News',
+            trending : false
             }, inputData, params)
     - var headlineSize = `t--size-${data.size}`
     - var headlineFont = data.size === 's' ? 't--family-serif' : 't--family-condensed';
     - var headlineWeight = data.storyType === 'News' || data.size === 's' ? 't--weight-bold' : 't--weight-normal';
     - var headlineStyle = data.storyType === 'Opinion' ? 't--style-italic' : '';
-    .card(class='card--' + data.size + ' card--' + data.orientation + ' card--' + data.mediaPlacement data-sbid=data.id)
+    -
+        var now = new Date().getTime();
+        var timestamp = '';
+        if (now - data.timestamp < 3600000) {
+            timestamp = `${Math.round((now - data.timestamp) / 60000)} minutes ago`;
+        }
+    .card(class=`card--${data.size} card--${data.orientation} card--${data.mediaPlacement} card--${data.actions ? 'has-actions' : 'no-actions'}` data-sbid=data.id _ )
         .card--content.l--padding-bottom-m
             .card--text(class=`${data.alignment === 'center' ? 'card--text-center' : 'card--text-left' }`)
                 if data.flashline
@@ -26,22 +33,33 @@ mixin card(inputData, params)
                     .card--image.l--margin-top-m.l--margin-bottom-m
                         img(src=data.image)
                 if data.summary
-                    .card--summary.t--family-serif.t--size-s.t--color-nickel #{data.summary}
-                if data.byline || data.timestamp
-                    .card--byline.t--family-sansCondensed.t--size-s.t--weight-light.l--margin-top-m.t--color-nickel
+                    .card--summary.t--family-serif.t--size-s.t--color-nickel.l--margin-bottom-m #{data.summary}
+                if data.byline || timestamp
+                    .card--byline.t--family-sansCondensed.t--size-s.t--weight-light.t--color-nickel
                         if data.byline
                             if data.avatar
                                 .card--byline-avatar
                                     img(src=data.avatar)
                             .card--byline-attribution by #{data.byline}
-                        if data.byline && data.timestamp 
+                        if data.byline && timestamp 
                             .card--byline-divider &nbsp;·&nbsp;
-                        if data.timestamp 
-                            .card--byline-timestamp #{data.timestamp}
+                        if timestamp 
+                            .card--byline-timestamp #{timestamp}
+                if data.trending
+                    .card--trending.t--family-sansCondensed.t--color-green-light.l--margin-top-s.t--size-xs
+                        .card--trending-icon
+                            +icon('trending')
+                        .card--trending-label.l--margin-left-s Trending
+
+                if data.orientation === 'horizontal' && data.actions
+                    .card--actions.l--margin-top-s.l--padding-top-s
+                        +cardAction()
+                        +cardAction({icon: 'share', label: 'Share'})
+                        +cardAction({iconAlignment: 'right', icon: 'comments', label: data.commentCount})
             if data.image && data.mediaPlacement !== 'middle'
                 .card--image
                     img(src=data.image)
-        if data.actions
+        if data.orientation === 'vertical' && data.actions
             .card--actions.l--margin-top-s.l--padding-top-s
                 +cardAction()
                 +cardAction({icon: 'share', label: 'Share'})

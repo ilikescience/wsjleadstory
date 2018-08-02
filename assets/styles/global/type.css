@@ -190,6 +190,8 @@
 .t--color-white { color: var(--c--white); }
 .t--color-red { color: var(--c--red); }
 .t--color-green { color: var(--c--green); }
+.t--color-green-light { color: var(--c--green-light); }
+
 
 .t--size-xl {
     font-size: var(--t--size-xl);

@@ -1,0 +1,41 @@
+extends ../layouts/default
+
+include ../components/card
+include ../components/strap
+
+block content
+    - var news = locals.news
+    include ../partials/marketDataStrip
+    include ../partials/nav
+    .l--grid-article.l--margin-top-xl
+        .share
+            include ../partials/share
+        .heading
+            .t--family-sansCondensed.t--color-nickel.t--size-xs.l--margin-bottom-m NATIONAL SECURITY
+            .t--size-xl.t--family-condensed.t--weight-bold.l--margin-bottom-m U.S. Turns Up the Heat on China
+            .t--size-m.t--family-sans.t--color-nickel.t--weight-light The Trump administration threatened to more than double proposed tariffs while Congress backed curbs on Beijing’s economic and military activity
+        .art
+            img(src="https://images.wsj.net/im-20373")
+        .article
+            .article--byline.t--style-italic.l--margin-bottom-s By Bob Davis and Lingling Wei
+            .article--timestamp.t--family-sansCondensed.t--size-s.t--color-moon.l--margin-bottom-l Updated Aug. 1, 2018 7:47 p.m. ET
+            p WASHINGTON—The U.S. turned up the heat Wednesday on China, with the Trump administration threatening to more than double proposed tariffs on imports while Congress passed a defense bill designed to restrict Beijing’s economic and military activity.
+            p The moves come as Beijing and Washington have failed to ease an escalating trade dispute, prompting the administration to seek additional leverage. The administration, which has already affixed tariffs on billions of dollars in Chinese imports, said it would consider more than doubling proposed tariffs on a further $200 billion worth of Chinese goods to 25%, up from an original 10%.
+            p Meantime, the Senate approved a defense-policy bill that both tightens U.S. national-security reviews of Chinese corporate deals and revamps export controls over which U.S. technologies can be sent abroad. The bill, which also restricts Beijing in areas ranging from cultural activity to military exercises, passed the House a week earlier and President Trump is expected to sign it into law.
+            p While Mr. Trump has sparred with some Republicans in Congress over the wisdom of trade conflicts with allies such as Canada, Mexico and the European Union, the goal of confronting China—if not the White House tactics—has achieved a degree of unanimity at both ends of Pennsylvania Avenue.
+            p Behind the consensus is a fear that China’s rise is coming at America’s expense, as it pursues the acquisition of sensitive technology and evolves into a U.S. military rival.
+            p Administration officials are confident they have the upper hand in the trade fight because the U.S. economy is strengthening while the Chinese economy shows signs of growing slack. Moreover, China is more dependent on trade than the U.S.
+            p But that confidence so far hasn’t translated into action. Preliminary talks by Treasury Secretary Steven Mnuchin and Chinese Vice Premier Liu He haven’t produced even a plan for additional trade negotiations.
+            p “Communications remain open,” said a senior administration official in briefing reporters. “There are conversations about whether to have fruitful negotiations or not.”
+            p Relations between China and the U.S. have been tense over the Trump administration’s efforts to address a $376 billion trade imbalance between the nations. President Trump has threatened to apply tariffs to all $505 billion in Chinese goods entering the U.S. if the two are unable to reach a settlement. Washington has already applied tariffs to $34 billion worth of Chinese imports, with another set of duties on $16 billion in goods scheduled in the days ahead.
+            p The U.S. threatened Wednesday to make the next round of tariffs more punitive. In a Monday White House meeting, Mr. Trump dismissed the original administration plan for a 10% tariff on $200 billion in imports—the next step in Mr. Trump’s escalation—and had his team bump up the levy to 25%.
+            p The administration didn’t spell out a particular rationale for increasing the tariff. People familiar with White House discussions say the reasons include anger over the Chinese government’s failure to approve the merger of U.S.-based Qualcomm Inc. and Dutch chip maker NXP Semiconductors , which forced the companies to scrap a deal aimed at boosting Qualcomm’s reach into new markets.
+            p Industry officials who have discussed the move with the White House say another reason for the increase is to compensate for the decline in the value of the yuan by about 6% over the past two months. A weaker Chinese currency makes Chinese products more competitive on world markets.
+            p “It’s important countries refrain from devaluing currencies for competitive purposes,” said a senior administration official, though he didn’t accuse China of acting in that fashion.
+            p The proposed tariff increase poses big risks for both the U.S. and global economy. A 25% tariff would boost the cost of a range of U.S. imports at a time when inflation has begun to pick up. It would become another factor for the Federal Reserve to consider as it decides how quickly to raise interest rates.
+            p “This gets you nothing,” said Fred Bergsten, founder of the Peterson Institute for International Economics, a Washington, D.C., free-trade think tank. “It adds to inflation pressure and interest rates and [would] strengthen the dollar, which makes trade situation even worse” for the U.S., he said.
+            p Keith Weinberger, chief executive of Empire Today, a flooring company in Northlake, Ill., said he “might be able to offset” a 10% tariff on his purchases of Chinese vinyl flooring. “But there’s nothing you can do about 25.”
+            p Higher-than-anticipated tariffs could also encourage Beijing to let the yuan slide even further, raising the prospect that a trade fight turns into a currency battle. “It’s an increasing risk,” said Brad Setser, a currency expert at the Council on Foreign Relations.
+        .rail.l--padding-top-xl
+            include ../partials/whatsNews
+    include ../components/fadeOut

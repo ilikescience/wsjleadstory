@@ -58,7 +58,7 @@
 }
 
 .is-wn-expanded {
-    grid-template: 'col1 col1 col2' 'col1 col1 col3' / 3fr 7fr 3fr;
+    grid-template: 'col1 col1 col2' 'col4 col4 col3' / 3fr 7fr 3fr;
 
     & .t--size-xl {
         font-size: var(--t--size-l);
@@ -93,10 +93,33 @@
         & .marketDataCard {
             margin: 0 auto var(--l--space-l);
             max-width: var(--expanded-size);
+            flex-direction: row;
+        }
 
-            & .t--size-xs {
-                font-size: 1em;
-            }
+        & .whatsNews--caughtUp {
+            margin: 0 auto;
+            max-width: var(--expanded-size);
+        }
+
+        & .t--size-xs {
+            font-size: 1em;
         }
     }
+}
+
+.whatsNews--caughtUp {
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.05);
+
+    & .t--size-xs {
+        line-height: 1.3em;
+    }
+}
+
+.whatsNews--caughtUp-icon {
+    width: 32px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    fill: var(--c--green);
 }

@@ -1,0 +1,29 @@
+.l--grid-article {
+
+    & .share {
+        grid-area: share;
+    }
+
+    & .heading {
+        grid-area: heading;
+    }
+
+    & .art {
+        grid-area: art;
+    }
+
+    & .article {
+        margin: 0 auto; 
+        grid-area: article;
+        max-width: 700px;
+
+        & p {
+            font-size: 18px;
+            line-height: 27px;
+        }
+    }
+
+    & .rail {
+        grid-area: rail;
+    }
+}

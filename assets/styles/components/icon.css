@@ -1,3 +1,4 @@
-svg path:not(.defaultFill) {
+svg path:not(.defaultFill),
+svg g:not(.defaultFill) {
     fill: inherit;
 }

@@ -11,8 +11,16 @@
     }
 }
 
+.card--action-label {
+    margin-left: calc(var(--l--space-s) / 2);
+}
+
 .card--action-right {
     flex-direction: row-reverse;
+
+    & .card--action-label {
+        margin-right: calc(var(--l--space-s) / 2);
+    }
 }
 
 .card--action:last-child {

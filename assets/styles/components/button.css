@@ -1,0 +1,13 @@
+.button {
+    display: block;
+    padding: var(--l--space-m);
+    border-radius: 3px;
+    background: var(--c--blue);
+    text-align: center;
+    color: var(--c--white);
+    font-family: Retina;
+    font-weight: 400;
+    font-size: var(--t--size-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}

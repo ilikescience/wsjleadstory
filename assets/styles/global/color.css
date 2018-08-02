@@ -9,8 +9,10 @@
     --c--white: #fff;
     --c--red: #ec0404;
     --c--green: #0b8a00;
+    --c--green-light: #2eb921;
     --c--glow: #fffaf1;
     --c--blue: #0274b6;
+    --c--yellow: #fec832;
 }
 
 .c--bg-jet { background: var(--c--jet); }
@@ -23,4 +25,5 @@
 .c--bg-white { background: var(--c--white); }
 .c--bg-red { background: var(--c--red); }
 .c--bg-green { background: var(--c--green); }
+.c--bg-green-light { background: var(--c--green-light); }
 .c--bg-glow { background: var(--c--glow); }

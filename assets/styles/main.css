@@ -10,8 +10,24 @@
 @import 'components/icon';
 @import 'components/whatsNews';
 @import 'components/strap';
+@import 'components/button';
+@import 'components/newsBrief';
+@import 'components/share';
+@import 'components/fadeOut';
+@import 'layouts/article';
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
 
 body {
+    position: relative;
     font-family: var(--t--family-serif);
     color: var(--c--coal);
     -webkit-font-smoothing: antialiased;

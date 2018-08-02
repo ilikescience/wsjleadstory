@@ -10,7 +10,7 @@ block content
     include ../partials/nav
     .l--grid.l--margin-top-xl
         include ../partials/whatsNews
-        .column
+        .l--grid-2
             +card(news[0],
                 {
                 size: 'xl',
@@ -21,12 +21,13 @@ block content
                 size: 'l',
                 mediaPlacement : 'middle'
             })
-        .column
-            +card(news[2], {image: false, actions: false})
+        .l--grid-3
+            +card(news[2], {size: 'l', image: false, actions: false})
             +card(news[3], {image: false, actions: false})
             +card(news[4], {image: false, actions: false})
             +strap('Opinion')
             +card(opinion[0], {
+                size: 'l',
                 image: false, 
                 actions: false
             })
@@ -38,3 +39,13 @@ block content
                 image: false, 
                 actions: false
             })
+        .l--grid-4
+            +strap('U.S. News')
+            +card(news[5], {size: 'l', actions: true, orientation: 'horizontal'})
+            +card(news[6], {size: 'l', actions: true, orientation: 'horizontal'})
+            +card(news[7], {size: 'l', actions: true, orientation: 'horizontal'})
+            +strap('Life & Arts')
+            +card(life[5], {size: 'l', actions: true, orientation: 'horizontal'})
+            +card(life[6], {size: 'l', actions: true, orientation: 'horizontal'})
+            +card(life[7], {size: 'l', actions: true, orientation: 'horizontal'})
+    include ../components/fadeOut

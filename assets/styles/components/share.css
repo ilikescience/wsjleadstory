@@ -1,0 +1,27 @@
+.share {
+    position: sticky;
+    top: 20px;
+}
+
+.share--icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--c--silver);
+    margin-bottom: 20px;
+}
+
+.share--icon svg {
+    width: 20px;
+    height: 20px;
+    margin: 10px;
+    fill: var(--c--white);
+}
+
+.share--facebook {
+    background: #405a93;
+}
+
+.share--twitter {
+    background: #549af8;
+}

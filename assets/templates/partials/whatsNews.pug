@@ -9,11 +9,21 @@ include ../components/card
         include marketDataCard
     - var n = 0;
     while n < 10
-        +card(locals.news[Math.floor(Math.random() * 100)],
+        +card(locals.news[Math.floor(Math.random() * 150)],
                     {
                     size: 's',
                     actions: false,
                     image: false,
-                    byline: false
+                    byline: false,
+                    flashline: false
                 })
         - n++
+    .whatsNews--caughtUp.t--weight-light.l--padding-m.t--align-center
+        .whatsNews--caughtUp-icon.l--margin-bottom-m.l--margin-top-l
+            <svg viewBox="0 0 42 32">
+                <path fill-rule="nonzero" d="M36.525.525l4.95 4.95L15 31.95.525 17.475l4.95-4.95L15 22.05z"/>
+            </svg>
+        .whatsNews--caughtUp-title.t--size-m.l--margin-bottom-m.t--family-sansCondensed You're all caught up
+        .whatsNews--caughtUp-description.t--family-sans.l--margin-top-l.l--margin-bottom-l.t--size-xs Check back later.
+        .whatsNews--caughtUp-cta
+                .button Get updates via e-mail

@@ -1,0 +1,40 @@
+extends ../layouts/default
+
+include ../components/card
+include ../components/strap
+
+block content
+    - var news = locals.news
+    include ../partials/marketDataStrip
+    include ../partials/nav
+    .l--grid-article.l--margin-top-xl
+        .share
+            include ../partials/share
+        .heading
+            .t--size-xl.t--family-condensed.t--weight-bold.l--margin-bottom-m News Brief, #{new Date().toLocaleDateString('en-US', {month: 'long', day: 'numeric', year: 'numeric'})}
+            .t--size-m.t--family-sans.t--color-nickel.t--weight-light Good Morning. Here’s what we’re watching as the U.S. business day gets under way.
+
+
+        .art
+            img(src="https://images.wsj.net/im-20518")
+        .article
+            .article--byline.t--style-italic.l--margin-bottom-s By Bob Davis and Lingling Wei
+            .article--timestamp.t--family-sansCondensed.t--size-s.t--color-moon.l--margin-bottom-l Updated Aug. 1, 2018 7:47 p.m. ET
+            p Federal Reserve Chairman Jerome Powell returns to Capitol Hill for a second day of testimony, with investors eager for more on whether his bullish view of the U.S. economy might translate into a more aggressive approach to raising interest rates. 
+            p Consumer spending and auto-sales data will be released this morning. Analysts will be watching the personal-income data from January for further signs of ramped-up wage and price growth that could raise the possibility of faster-than-expected monetary policy tightening by the Fed.
+            p Global markets began March by extending losses logged at the end of February. Declines came after the Dow industrials and S&P 500 snapped their 10-month winning streaks as investors continued to weigh the impact of higher rates on the nearly nine-year bull market.
+            p Senior administration officials said they would ask for comments from industry on both a 10% tariff and a 25% tariff. A final decision on the rate isn’t expected until September at the earliest.
+            p The administration didn’t spell out a particular rationale for increasing the tariff. People familiar with White House discussions say the reasons include anger over the Chinese government’s failure to approve the merger of U.S.-based Qualcomm Inc. and Dutch chip maker NXP Semiconductors , which forced the companies to scrap a deal aimed at boosting Qualcomm’s reach into new markets.
+            p Industry officials who have discussed the move with the White House say another reason for the increase is to compensate for the decline in the value of the yuan by about 6% over the past two months. A weaker Chinese currency makes Chinese products more competitive on world markets.
+            p “It’s important countries refrain from devaluing currencies for competitive purposes,” said a senior administration official, though he didn’t accuse China of acting in that fashion.
+            p The proposed tariff increase poses big risks for both the U.S. and global economy. A 25% tariff would boost the cost of a range of U.S. imports at a time when inflation has begun to pick up. It would become another factor for the Federal Reserve to consider as it decides how quickly to raise interest rates.
+            p “This gets you nothing,” said Fred Bergsten, founder of the Peterson Institute for International Economics, a Washington, D.C., free-trade think tank. “It adds to inflation pressure and interest rates and [would] strengthen the dollar, which makes trade situation even worse” for the U.S., he said.
+            p Keith Weinberger, chief executive of Empire Today, a flooring company in Northlake, Ill., said he “might be able to offset” a 10% tariff on his purchases of Chinese vinyl flooring. “But there’s nothing you can do about 25.”
+            p Higher-than-anticipated tariffs could also encourage Beijing to let the yuan slide even further, raising the prospect that a trade fight turns into a currency battle. “It’s an increasing risk,” said Brad Setser, a currency expert at the Council on Foreign Relations.
+            p China’s central bank isn’t actively driving the currency down, say traders, analysts and Chinese government advisers. Rather it is letting the currency slide as investors bid the yuan down on expectations that China will roll out more measures to back economic growth.
+            p To be sure, the People’s Bank of China can control the pace of the yuan’s depreciation if it wants. The central bank sets a daily official rate for the yuan, known as the fix, and can tap its vast foreign-exchange reserves to prop up the currency. For now, the central bank has largely stayed its hand.
+            p But Chinese authorities can take a more active stance. “We’ve been told by regulators to be on high alert for any impact of the trade war on the real economy,” said a senior executive at a Big Four state-owned bank in Beijing. The bank, the executive said, has received “window guidance” from China’s central bank to step up its corporate lending.
+            p The White House says its trade battle has a twofold purpose: to reduce the $376 billion U.S. trade deficit with China by $200 billion, and force China to change its industrial policies, including those that pressure U.S. companies to transfer technology to Chinese businesses.
+            p The administration has relied mainly on tariffs to get China to change its trade policies, prompting Beijing to retaliate tit for tat. So far, the U.S. has imposed tariffs on $34 billion worth of Chinese goods, mainly machinery and components. China has retaliated with tariffs on the same amount of U.S. exports, especially farm products.
+        .rail.l--padding-top-xl
+    include ../components/fadeOut

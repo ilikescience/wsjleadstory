@@ -11,7 +11,9 @@ fetch(url)
         const articles = {
             news: [],
             opinion: [],
-            life: []
+            life: [],
+            magazine: [],
+            categories: {}
         };
         json.forEach( (item) => {
             if (item.articles.length > 0) {
@@ -19,6 +21,7 @@ fetch(url)
                     let thisFlashline = '';
                     let thisImage = '';
                     let thisAvatar = '';
+                    let thisSection = article.articleSection;
                     if (article.hasOwnProperty('flashline') && article.flashline) {
                         thisFlashline =  article.flashline.flashline;
                     };
@@ -39,7 +42,8 @@ fetch(url)
                         byline: article.byline,
                         flashline: thisFlashline,
                         storyType: article.articleSection,
-                        avatar: thisAvatar
+                        avatar: thisAvatar,
+                        timestamp: article.timestamp
                     }
                     if (thisArticle.storyType === 'Life' || 
                         thisArticle.storyType === 'Arts' ||
@@ -48,12 +52,20 @@ fetch(url)
                         thisArticle.storyType === 'Slideshow' ) {
                         thisArticle.storyType = 'Life';
                         articles.life.push(thisArticle);
-                    }
+                    } 
                     else if (thisArticle.storyType === 'Opinion')
                         articles.opinion.push(thisArticle)
+                    else if (thisArticle.storyType ==='Magazine')
+                        articles.magazine.push(thisArticle)
                     else if(thisArticle.storyType !== 'Decos and Corrections' || thisArticle.storyType !=='Slideshow') {
                         thisArticle.storyType = 'News';
                         articles.news.push(thisArticle);
+                    }
+                    if (articles.categories.hasOwnProperty(thisSection))
+                        articles.categories[thisSection].push(thisArticle);
+                    else {
+                        articles.categories[thisSection] = [];
+                        articles.categories[thisSection].push(thisArticle);
                     }
                 })
             }

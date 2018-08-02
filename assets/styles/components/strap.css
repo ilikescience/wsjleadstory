@@ -4,6 +4,10 @@
     border-top: 1px solid var(--c--jet);
 }
 
+.strap:not(:first-child) {
+    margin-top: var(--l--space-xl);
+}
+
 .strap--title {
     flex: 1 0 auto;
 }

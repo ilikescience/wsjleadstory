@@ -10,7 +10,15 @@
 }
 
 .marketDataCard {
+    display: flex;
     border-bottom: 1px solid var(--c--smoke);
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.marketDataCard--table,
+.marketDataCard--graph {
+    flex: 0 1 49%;
 }
 
 .marketDataCard--table table {
