@@ -8,70 +8,51 @@ fetch(url)
       return response.json();
     })
     .then(function(json) {
-        const articles = {
-            news: [],
-            opinion: [],
-            life: [],
-            magazine: [],
-            categories: {}
-        };
+        const data = {articles: []};
         json.forEach( (item) => {
             if (item.articles.length > 0) {
                 item.articles.forEach((article) => {
-                    let thisFlashline = '';
-                    let thisImage = '';
-                    let thisAvatar = '';
-                    let thisSection = article.articleSection;
-                    if (article.hasOwnProperty('flashline') && article.flashline) {
-                        thisFlashline =  article.flashline.flashline;
-                    };
-                    if (article.hasOwnProperty('image') && 
-                        article.image && 
-                        article.image.widths &&
-                        article.image.widths['620']) {
-                        thisImage = article.image.widths['620'].url;
-                    }
-                    if (article.hasOwnProperty('authors') && article.authors[0].hasOwnProperty('hedcutImage')) {
-                        thisAvatar = article.authors[0].hedcutImage;
-                    }
                     const thisArticle = { 
                         id: article.articleId,
                         title: article.headline,
                         summary: article.summary,
-                        image: thisImage,
+                        image: false,
                         byline: article.byline,
-                        flashline: thisFlashline,
+                        flashline: article.hasOwnProperty('flashline') && article.flashline ? article.flashline.flashline : '',
+                        category: article.articleSection,
                         storyType: article.articleSection,
-                        avatar: thisAvatar,
+                        avatar: false,
                         timestamp: article.timestamp
                     }
-                    if (thisArticle.storyType === 'Life' || 
-                        thisArticle.storyType === 'Arts' ||
-                        thisArticle.storyType === 'Homes' ||
-                        thisArticle.storyType === 'Real Estate' ||
-                        thisArticle.storyType === 'Slideshow' ) {
+                    if (article.hasOwnProperty('image') && 
+                        article.image && 
+                        article.image.widths &&
+                        article.image.widths['620']) {
+                        thisArticle.image = article.image.widths['620'].url;
+                    }
+                    if (article.hasOwnProperty('authors') && article.authors[0].hasOwnProperty('hedcutImage')) {
+                        thisArticle.avatar = article.authors[0].hedcutImage;
+                    }
+                    if (article.articleSection === 'Life' || 
+                        article.articleSection === 'Arts' ||
+                        article.articleSection === 'Homes' ||
+                        article.articleSection === 'Real Estate' ||
+                        article.articleSection === 'Slideshow' ) {
                         thisArticle.storyType = 'Life';
-                        articles.life.push(thisArticle);
-                    } 
-                    else if (thisArticle.storyType === 'Opinion')
-                        articles.opinion.push(thisArticle)
-                    else if (thisArticle.storyType ==='Magazine')
-                        articles.magazine.push(thisArticle)
-                    else if(thisArticle.storyType !== 'Decos and Corrections' || thisArticle.storyType !=='Slideshow') {
-                        thisArticle.storyType = 'News';
-                        articles.news.push(thisArticle);
+                    } else if(article.storyType === 'Decos and Corrections' ||
+                        article.storyType === 'Opinion' ||
+                        article.storyType === '') {
+                        // skip these
                     }
-                    if (articles.categories.hasOwnProperty(thisSection))
-                        articles.categories[thisSection].push(thisArticle);
                     else {
-                        articles.categories[thisSection] = [];
-                        articles.categories[thisSection].push(thisArticle);
+                        thisArticle.storyType = 'News'
                     }
+                    data.articles.push(thisArticle);
                 })
             }
         })
-    const writeableJson = JSON.stringify(articles);
-    fs.writeFile('data.json', writeableJson, 'utf8', () => {
-        console.log('json written');
-    });
+        const writeableJson = JSON.stringify(data);
+        fs.writeFile('data.json', writeableJson, 'utf8', () => {
+            console.log('json written');
+        });
     });

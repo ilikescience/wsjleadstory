@@ -4,114 +4,122 @@ include ../components/card
 include ../components/strap
 
 block content
-    - var news = locals.news
-    - var opinion = locals.opinion
-    - for (let i = news.length - 1; i > 0; i--) {
-            - const j = Math.floor(Math.random() * (i + 1));
-            - [news[i], news[j]] = [news[j], news[i]];
-    - }
-    .l--grid.l--margin-top-xl.l--grid-col-3
-        +card(news[0], {
-            columns: 2,
-            rows: 3,
-            size: 'l',
-            flashline: 'Finance',
-            timestamp: 1533562200000
-        })
-        +card(news[1], {
-            actions: false,
-        } )
-        +card(news[3], {
-            size: 's',
-            image: false,
-            actions: false,
-            byline: false
-        })
+    - var ahed = locals.articles.filter((article) => article.flashline === 'The A-hed')
     .l--grid.l--margin-top-xl
-        +strap('Life & Arts')
-        +card(life[0])
-        +card(life[4], {
-            mediaPlacement: 'middle',
-            alignment: 'center',
-            columns: 2,
-            size: 'l',
-            actions: false,
-            byline: false,
-            summary: false
-        })
-        +card(life[5])
-    .l--grid.l--margin-top-xl
-        +strap('List')
-        +card(news[4], {
-            orientation: 'horizontal',
-            columns: 4,
-            size: 'l',
-            mediaPlacement: 'first'
-        })
-        +card(news[5], {
-            orientation: 'horizontal',
-            columns: 4,
-            size: 'l'
-        })
-        +card(news[6], {
-            orientation: 'horizontal',
-            columns: 4,
-            size: 'l'
-        })
-    .l--grid.l--margin-top-xl
-        +strap('List (flipped)')
-        +card(news[7], {
-            orientation: 'horizontal',
-            columns: 4,
-            size: 'l',
-            mediaPlacement: 'last'
-        })
-        +card(news[8], {
-            orientation: 'horizontal',
-            columns: 4,
-            size: 'l',
-            mediaPlacement: 'last'
-        })
-        +card(news[9], {
-            orientation: 'horizontal',
-            columns: 4,
-            size: 'l',
-            mediaPlacement: 'last'
-        })
-    .l--grid.l--grid-col-3.l--margin-top-xl
-        +strap('Video-ish')
-        +card(life[8], {
-            columns: 2,
-            rows: 3,
-            size: 'l',
-            summary: false,
-            actions: false,
-            byline: false
-        })
-        +card(life[9], {
-            summary: false,
-            actions: false
-        })
-        +card(life[10], {
-            orientation: 'horizontal',
-            summary: false,
-            actions: false
-        })
-        +card(life[11], {
-            orientation: 'horizontal',
-            summary: false,
-            actions: false
-        })
-    .l--grid.l--margin-top-xl
-        - var n = 0;
-        while n < 9
-            +card(news[n], {
-                size: ['xl', 'l', 'm', 's'][Math.floor(Math.random() * 3)],
-                summary: [false, news[0].summary][Math.floor(Math.random() * 2)],
-                flashline: [false, news[0].flashline][Math.floor(Math.random() * 2)],
-                actions: [true, false][Math.floor(Math.random() * 2)],
-                mediaPlacement: ['first', 'middle', 'last'][Math.floor(Math.random() * 4)],
-                timestamp: [1533562200000, false][Math.floor(Math.random() * 2)],
-                byline: [false, news[0].byline][Math.floor(Math.random() * 2)]
+        .l--grid-col.l--grid-col-span-3
+            +card(locals.articles[0], {
+                size: 'l',
+                image: false,
+                actions: false
             })
-            - n++
+            +card(locals.articles[1], {
+                actions: false,
+                image: false
+            })
+            +card(ahed[0], {
+                ornament: 'ahed', 
+                size: 'l',
+                alignment: 'center',
+                mediaPlacement: 'last',
+                image: 'https://cl.ly/3G2I0d3t0F0V/Screen%20Shot%202018-08-07%20at%204.56.41%20PM.png'
+            })
+        .l--grid-col.l--grid-col-span-5
+            +card(locals.articles[4], {
+                size: 'l',
+            })
+            +card(locals.articles[5], {
+                byline: false,
+                actions: false,
+                orientation: 'horizontal',
+                mediaPlacement: 'last',
+                image: false
+            })
+            +card(locals.articles[6], {
+                byline: false,
+                actions: false,
+                orientation: 'horizontal',
+                mediaPlacement: 'last',
+                image: false
+            })
+            +card(locals.articles[18], {
+                byline: false,
+                actions: false,
+                orientation: 'horizontal',
+                mediaPlacement: 'last',
+                image: false
+            })
+
+        .l--grid-col.l--grid-col-span-2
+            +card(locals.articles[7], {
+                summary: false,
+                byline: false,
+                actions: false,
+                timestamp: false
+            })
+            +card(locals.articles[8], {
+                summary: false,
+                byline: false,
+                actions: false,
+                timestamp: false
+            })
+            +card(locals.articles[9], {
+                summary: false,
+                byline: false,
+                actions: false,
+                timestamp: false
+            })
+            +card(locals.articles[10], {
+                summary: false,
+                byline: false,
+                actions: false,
+                timestamp: false
+            })
+    .l--grid.l--margin-top-xl
+        .l--grid-col.l--grid-col-span-3
+            +card(locals.articles[0], {
+                size: 'l'
+            })
+            .l--grid
+                .l--grid-col
+                    +card(locals.articles[1], {
+                        image: false,
+                        actions: false
+                    })
+                .l--grid-col
+                    +card(locals.articles[2], {
+                        image: false,
+                        actions: false
+                    })
+
+        .l--grid-col
+            +card(locals.articles[3], {
+                actions: false
+            })
+            +card(locals.articles[4], {
+                actions: false
+            })
+    .l--grid.l--margin-top-xl
+        .l--grid-col.l--grid-col-span-2
+            +card(ahed[0], {
+                ornament: 'ahed', 
+                size: 'xl',
+                alignment: 'center',
+                mediaPlacement: 'last',
+                image: 'https://cl.ly/3G2I0d3t0F0V/Screen%20Shot%202018-08-07%20at%204.56.41%20PM.png'
+            })
+        .l--grid-col
+            +card(ahed[0], {
+                ornament: 'ahed', 
+                size: 'l',
+                alignment: 'center',
+                mediaPlacement: 'last',
+                image: 'https://cl.ly/3G2I0d3t0F0V/Screen%20Shot%202018-08-07%20at%204.56.41%20PM.png'
+            })
+        .l--grid-col
+            +card(ahed[0], {
+                ornament: 'ahed', 
+                size: 'l',
+                alignment: 'center',
+                mediaPlacement: 'last',
+                image: 'https://cl.ly/3G2I0d3t0F0V/Screen%20Shot%202018-08-07%20at%204.56.41%20PM.png'
+            })

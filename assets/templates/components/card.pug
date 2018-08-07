@@ -13,7 +13,8 @@ mixin card(inputData, params)
             actions: true,
             commentCount: Math.floor(Math.random() * 100),
             storyType : 'News',
-            trending : false
+            trending : false,
+            ornament: false
             }, inputData, params)
     -
         var now = new Date().getTime();
@@ -33,15 +34,24 @@ mixin card(inputData, params)
     )
         .card--content.l--padding-bottom-m
             .card--text(class=`${data.alignment === 'center' ? 'card--text-center' : 'card--text-left' }`)
-                if data.flashline
-                    .card--flashline.t--family-sansCondensed.t--size-xs.t--weight-light.t--transform-uppercase.t--kering-m.l--margin-bottom-s #{data.flashline}
-                .card--headline.t--family-condensed.l--margin-bottom-m(
-                    class=`
-                        t--size-${data.size} 
-                        ${data.size === 's' ? 't--family-serif' : 't--family-condensed'} 
-                        ${data.storyType === 'News' || data.size === 's' ? 't--weight-bold' : 't--weight-normal'} 
-                        ${data.storyType === 'Opinion' ? 't--style-italic' : ''}`
-                ) #{data.title}
+                if data.ornament === 'ahed'
+                    .card--ahed-title.l--padding-top-m.l--padding-right-l.l--padding-left-l.l--margin-bottom-l
+                        .card--headline.t--family-condensed.l--margin-bottom-m(
+                            class=`
+                                t--size-${data.size} 
+                                t--weight-normal
+                                t--style-italic`
+                            ) #{data.title}
+                else 
+                    if data.flashline
+                        .card--flashline.t--family-sansCondensed.t--size-xs.t--weight-light.t--transform-uppercase.t--kering-m.l--margin-bottom-s #{data.flashline}
+                    .card--headline.t--family-condensed.l--margin-bottom-m(
+                        class=`
+                            t--size-${data.size} 
+                            ${data.size === 's' ? 't--family-serif' : 't--family-condensed'} 
+                            ${data.storyType === 'News' || data.size === 's' ? 't--weight-bold' : 't--weight-normal'} 
+                            ${data.storyType === 'Opinion' ? 't--style-italic' : ''}`
+                        ) #{data.title}
                 if data.mediaPlacement === 'middle'
                     .card--image.l--margin-top-m.l--margin-bottom-m
                         img(src=data.image)

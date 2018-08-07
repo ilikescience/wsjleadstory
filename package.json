@@ -10,7 +10,7 @@
   "author": "Matthew Ström",
   "license": "ISC",
   "dependencies": {
-    "browser-sync": "^2.23.6",
+    "browser-sync": "^2.24.6",
     "ecstatic": "^3.2.0",
     "gulp": "^3.9.1",
     "gulp-filter": "^5.1.0",
