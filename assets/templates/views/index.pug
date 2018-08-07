@@ -6,46 +6,112 @@ include ../components/strap
 block content
     - var news = locals.news
     - var opinion = locals.opinion
-    include ../partials/marketDataStrip
-    include ../partials/nav
+    - for (let i = news.length - 1; i > 0; i--) {
+            - const j = Math.floor(Math.random() * (i + 1));
+            - [news[i], news[j]] = [news[j], news[i]];
+    - }
+    .l--grid.l--margin-top-xl.l--grid-col-3
+        +card(news[0], {
+            columns: 2,
+            rows: 3,
+            size: 'l',
+            flashline: 'Finance',
+            timestamp: 1533562200000
+        })
+        +card(news[1], {
+            actions: false,
+        } )
+        +card(news[3], {
+            size: 's',
+            image: false,
+            actions: false,
+            byline: false
+        })
     .l--grid.l--margin-top-xl
-        include ../partials/whatsNews
-        .l--grid-2
-            +card(news[0],
-                {
-                size: 'xl',
-                mediaPlacement : 'middle'
+        +strap('Life & Arts')
+        +card(life[0])
+        +card(life[4], {
+            mediaPlacement: 'middle',
+            alignment: 'center',
+            columns: 2,
+            size: 'l',
+            actions: false,
+            byline: false,
+            summary: false
+        })
+        +card(life[5])
+    .l--grid.l--margin-top-xl
+        +strap('List')
+        +card(news[4], {
+            orientation: 'horizontal',
+            columns: 4,
+            size: 'l',
+            mediaPlacement: 'first'
+        })
+        +card(news[5], {
+            orientation: 'horizontal',
+            columns: 4,
+            size: 'l'
+        })
+        +card(news[6], {
+            orientation: 'horizontal',
+            columns: 4,
+            size: 'l'
+        })
+    .l--grid.l--margin-top-xl
+        +strap('List (flipped)')
+        +card(news[7], {
+            orientation: 'horizontal',
+            columns: 4,
+            size: 'l',
+            mediaPlacement: 'last'
+        })
+        +card(news[8], {
+            orientation: 'horizontal',
+            columns: 4,
+            size: 'l',
+            mediaPlacement: 'last'
+        })
+        +card(news[9], {
+            orientation: 'horizontal',
+            columns: 4,
+            size: 'l',
+            mediaPlacement: 'last'
+        })
+    .l--grid.l--grid-col-3.l--margin-top-xl
+        +strap('Video-ish')
+        +card(life[8], {
+            columns: 2,
+            rows: 3,
+            size: 'l',
+            summary: false,
+            actions: false,
+            byline: false
+        })
+        +card(life[9], {
+            summary: false,
+            actions: false
+        })
+        +card(life[10], {
+            orientation: 'horizontal',
+            summary: false,
+            actions: false
+        })
+        +card(life[11], {
+            orientation: 'horizontal',
+            summary: false,
+            actions: false
+        })
+    .l--grid.l--margin-top-xl
+        - var n = 0;
+        while n < 9
+            +card(news[n], {
+                size: ['xl', 'l', 'm', 's'][Math.floor(Math.random() * 3)],
+                summary: [false, news[0].summary][Math.floor(Math.random() * 2)],
+                flashline: [false, news[0].flashline][Math.floor(Math.random() * 2)],
+                actions: [true, false][Math.floor(Math.random() * 2)],
+                mediaPlacement: ['first', 'middle', 'last'][Math.floor(Math.random() * 4)],
+                timestamp: [1533562200000, false][Math.floor(Math.random() * 2)],
+                byline: [false, news[0].byline][Math.floor(Math.random() * 2)]
             })
-            +card(locals.news[1],
-                {
-                size: 'l',
-                mediaPlacement : 'middle'
-            })
-        .l--grid-3
-            +card(news[2], {size: 'l', image: false, actions: false})
-            +card(news[3], {image: false, actions: false})
-            +card(news[4], {image: false, actions: false})
-            +strap('Opinion')
-            +card(opinion[0], {
-                size: 'l',
-                image: false, 
-                actions: false
-            })
-            +card(opinion[1], {
-                image: false, 
-                actions: false
-            })
-            +card(opinion[2], {
-                image: false, 
-                actions: false
-            })
-        .l--grid-4
-            +strap('U.S. News')
-            +card(news[5], {size: 'l', actions: true, orientation: 'horizontal'})
-            +card(news[6], {size: 'l', actions: true, orientation: 'horizontal'})
-            +card(news[7], {size: 'l', actions: true, orientation: 'horizontal'})
-            +strap('Life & Arts')
-            +card(life[5], {size: 'l', actions: true, orientation: 'horizontal'})
-            +card(life[6], {size: 'l', actions: true, orientation: 'horizontal'})
-            +card(life[7], {size: 'l', actions: true, orientation: 'horizontal'})
-    include ../components/fadeOut
+            - n++

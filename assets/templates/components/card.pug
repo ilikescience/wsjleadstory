@@ -6,6 +6,8 @@ mixin card(inputData, params)
         var data = Object.assign({
             alignment: 'left',
             size: 'm',
+            columns: 1,
+            rows: 1,
             orientation: 'vertical',
             mediaPlacement: 'first',
             actions: true,
@@ -13,22 +15,33 @@ mixin card(inputData, params)
             storyType : 'News',
             trending : false
             }, inputData, params)
-    - var headlineSize = `t--size-${data.size}`
-    - var headlineFont = data.size === 's' ? 't--family-serif' : 't--family-condensed';
-    - var headlineWeight = data.storyType === 'News' || data.size === 's' ? 't--weight-bold' : 't--weight-normal';
-    - var headlineStyle = data.storyType === 'Opinion' ? 't--style-italic' : '';
     -
         var now = new Date().getTime();
         var timestamp = '';
         if (now - data.timestamp < 3600000) {
             timestamp = `${Math.round((now - data.timestamp) / 60000)} minutes ago`;
         }
-    .card(class=`card--${data.size} card--${data.orientation} card--${data.mediaPlacement} card--${data.actions ? 'has-actions' : 'no-actions'}` data-sbid=data.id _ )
+    .card(
+        class=`
+            card--${data.size}
+            card--${data.orientation}
+            card--${data.mediaPlacement}
+            card--${data.actions ? 'has-actions' : 'no-actions'}
+            l--grid-col-span-${data.columns}
+            l--grid-row-span-${data.rows}`
+        data-sbid=data.id
+    )
         .card--content.l--padding-bottom-m
             .card--text(class=`${data.alignment === 'center' ? 'card--text-center' : 'card--text-left' }`)
                 if data.flashline
                     .card--flashline.t--family-sansCondensed.t--size-xs.t--weight-light.t--transform-uppercase.t--kering-m.l--margin-bottom-s #{data.flashline}
-                .card--headline.t--family-condensed.l--margin-bottom-m(class=`${headlineSize} ${headlineFont} ${headlineWeight} ${headlineStyle}`) #{data.title}
+                .card--headline.t--family-condensed.l--margin-bottom-m(
+                    class=`
+                        t--size-${data.size} 
+                        ${data.size === 's' ? 't--family-serif' : 't--family-condensed'} 
+                        ${data.storyType === 'News' || data.size === 's' ? 't--weight-bold' : 't--weight-normal'} 
+                        ${data.storyType === 'Opinion' ? 't--style-italic' : ''}`
+                ) #{data.title}
                 if data.mediaPlacement === 'middle'
                     .card--image.l--margin-top-m.l--margin-bottom-m
                         img(src=data.image)
