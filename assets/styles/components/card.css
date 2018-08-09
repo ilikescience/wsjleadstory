@@ -172,3 +172,101 @@
     &::before { left: -2px; }
     &::after { right: -2px; }
 }
+
+.card--ahed-asterisk {
+
+    & .icon {
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+
+        &:not(:last-of-type) {
+            margin-right: 15px;
+        }
+    }
+}
+
+.card--leder-ornament {
+    position: relative;
+    width: 100%;
+    height: 1px;
+    margin: var(--l--space-m) auto var(--l--space-l);
+    max-width: 140px;
+    background: currentColor;
+
+    &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: -3px;
+        left: calc(50% - 3px);
+        width: 7px;
+        height: 7px;
+        transform: rotate(45deg);
+        background: currentColor;
+    }
+}
+
+.card--behind {
+    & .card--text {
+        width: 100%;
+    }
+}
+
+.card--image-behind {
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    color: var(--c--white);
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+
+    & .card--byline,
+    & .card--summary {
+        color: var(--c--snow);
+    }
+}
+
+.card--image-behind-overlay,
+.card--image-behind-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.card--image-behind-overlay {
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.75) 0%,
+            rgba(0, 0, 0, 0.5) 35%,
+            rgba(0, 0, 0, 0) 55%,
+            rgba(0, 0, 0, 0) 100%
+        );
+}
+
+.card--image-behind-content {
+    display: flex;
+    padding: var(--l--space-xl) var(--l--space-l) var(--l--space-l);
+    flex-direction: column;
+}
+
+.card--image-behind-headline-bottom {
+    & .card--image-behind-content {
+        justify-content: flex-end;
+    }
+
+    & .card--image-behind-overlay {
+        background:
+            linear-gradient(
+                to top,
+                rgba(0, 0, 0, 0.75) 0%,
+                rgba(0, 0, 0, 0.5) 35%,
+                rgba(0, 0, 0, 0) 55%,
+                rgba(0, 0, 0, 0) 100%
+            );
+    }
+}

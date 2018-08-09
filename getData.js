@@ -24,7 +24,9 @@ fetch(url)
                         avatar: false,
                         timestamp: article.timestamp
                     }
-                    if (article.hasOwnProperty('image') && 
+                    if (article.hasOwnProperty('arthurV2Image')) {
+                        thisArticle.image = article.arthurV2Image.location;
+                    } else if (article.hasOwnProperty('image') && 
                         article.image && 
                         article.image.widths &&
                         article.image.widths['620']) {

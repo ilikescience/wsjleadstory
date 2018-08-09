@@ -2,7 +2,7 @@
     display: flex;
     border-bottom: 1px solid var(--c--smoke);
     border-top: 1px solid var(--c--jet);
-    grid-column: 1  / -1;
+    flex: 1 0 auto;
 }
 
 .strap:not(:first-child) {
