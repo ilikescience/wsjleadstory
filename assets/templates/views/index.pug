@@ -2,6 +2,7 @@ extends ../layouts/default
 
 include ../components/card
 include ../components/strap
+include ../components/column
 
 block content
     - var ahed = locals.articles.filter((article) => article.flashline === 'The A-hed' || article.flashline === 'The A-Hed')
@@ -11,15 +12,23 @@ block content
         .l--grid-row
             +strap('Spotlight Seven')
         .l--grid-row
-            .l--grid-col.l--grid-col-span-3
+            +column({
+                span: 3,
+                borders: {
+                    right: 'light'
+                }
+            })
                 +card(locals.articles[0], {
                     size: 'l',
                     image: false,
-                    actions: false
+                    actions: false,
                 })
                 +card(locals.articles[1], {
                     actions: false,
-                    image: false
+                    image: false,
+                    borders: {
+                        bottom: 'heavy'
+                    }
                 })
                 +card(locals.articles[2], {
                     actions: false,
@@ -27,13 +36,13 @@ block content
                 })
                 +card(locals.articles[3], {
                     actions: false,
-                    image: false
+                    image: false,
+                    borders: false
                 })
             
-            .l--grid-col.l--grid-col-span-5
+            +column({span: 5})
                 +card(locals.articles[4], {
-                    size: 'xl',
-                    mediaPlacement: 'middle'
+                    size: 'xl'
                 })
                 +card(locals.articles[5], {
                     byline: false,
@@ -46,55 +55,65 @@ block content
                     actions: false,
                     orientation: 'horizontal',
                     mediaPlacement: 'last',
-                    image: false
+                    image: false,
+                    borders: false
                 })
 
-            .l--grid-col.l--grid-col-span-2
+            +column({
+                span: 2,
+                borders: {
+                    left: 'light'
+                }
+            })
                 +card(locals.articles[7], {
                     summary: false,
                     byline: false,
                     actions: false,
-                    timestamp: false
+                    timestamp: false,
+                    borders: false
                 })
                 +card(locals.articles[8], {
                     summary: false,
                     byline: false,
                     actions: false,
-                    timestamp: false
+                    timestamp: false,
+                    borders: false
                 })
                 +card(locals.articles[9], {
                     summary: false,
                     byline: false,
                     actions: false,
-                    timestamp: false
+                    timestamp: false,
+                    borders: false
                 })
                 +card(locals.articles[10], {
                     summary: false,
                     byline: false,
                     actions: false,
-                    timestamp: false
+                    timestamp: false,
+                    borders: false
                 })
     .l--grid.l--margin-top-xl
         .l--grid-row
             +strap('Nested grids')
         .l--grid-row
-            .l--grid-col.l--grid-col-span-2
+            +column({span: 2})
                 +card(locals.articles[0], {
                     size: 'l'
                 })
                 .l--grid
                     .l--grid-row
-                        .l--grid-col
+                        +column()
                             +card(locals.articles[1], {
                                 image: false,
                                 actions: false
                             })
-                        .l--grid-col
+                        +column()
                             +card(locals.articles[2], {
                                 image: false,
                                 actions: false
                             })
-            .l--grid-col
+            +column()
                 +card(locals.articles[3], {
                     actions: false
                 })
@@ -105,11 +124,11 @@ block content
         .l--grid-row
             +strap('Business')
         .l--grid-row
-            .l--grid-col.l--grid-col-span-2
+            +column({span: 2})
                 +card(business[0], {
                     size: 'l'
                 })
-            .l--grid-col
+            +column()
                 +card(business[1], {
                     actions: false,
                     image: false,
@@ -129,44 +148,29 @@ block content
         .l--grid-row
             +strap('Enterprise')
         .l--grid-row
-            .l--grid-col.l--grid-col-span-3
-                +card(locals.articles[5], {
-                    actions: false,
-                    image: false
-                })
-                +card(locals.articles[6], {
-                    actions: false,
-                    image: false
-                })
+            +column({span: 3})
                 +card(ahed[0], {
                     alignment: 'center',
                     size: 'l',
                     ornament: 'ahed',
                     mediaPlacement: 'last',
-                    image: 'https://cl.ly/3I200y2D0D2q/Screen%20Shot%202018-08-09%20at%204.51.12%20PM.png'
+                    image: 'https://cl.ly/2q2w3a3v0z1m/Screen%20Shot%202018-08-10%20at%2012.27.50%20PM.png'
                 })
-            .l--grid-col.l--grid-col-span-4
+            +column({span: 4})
                 +card(life[1], {
                     size: 'xl',
                     alignment: 'center',
                     ornament: 'leder'
                 })
-                +card(life[0], {
-                    orientation: 'horizontal',
-                    actions: false,
-                    mediaPlacement: 'last'
-                })
-                +card(life[2], {
-                    orientation: 'horizontal',
-                    actions: false,
-                    mediaPlacement: 'last'
-                })
     .l--grid.l--margin-top-xl
         .l--grid-row
             +strap('Overlays')
         .l--grid-row
-            .l--grid-col
+            +column()
                 +card(life[0], {
+                    colorTheme: 'inverted',
+                    ornament: 'leder',
+                    alignment: 'center',
                     mediaPlacement: 'behind',
                     size: 'l',
                     byline: false,
@@ -175,34 +179,74 @@ block content
                 })
                 .l--grid
                     .l--grid-row
-                        .l--grid-col
-                            +card(life[7], {
+                        +column()
+                            +card(life[1], {
+                                colorTheme: 'inverted',
                                 mediaPlacement: 'behind',
                                 mediaRatio: 0.66,
                                 actions: false,
                                 summary: false
                             })
-                        .l--grid-col
+                        +column()
                             +card(life[6], {
+                                colorTheme: 'inverted',
                                 mediaPlacement: 'behind',
                                 mediaRatio: 0.66,
                                 actions: false,
                                 summary: false
                             })
-            .l--grid-col
-                +card(life[5], {
+            +column()
+                +card(life[3], {
+                    colorTheme: 'inverted',
                     mediaPlacement: 'behind',
                     size: 'xl',
                     mediaRatio: 1,
                     ornament: 'leder',
                     alignment: 'center',
+                    headlinePosition: 'bottom',
                     actions: false
                 })
-                +card(life[11], {
+                +card(life[7], {
+                    colorTheme: 'inverted',
                     mediaPlacement: 'behind',
                     size: 'l',
-                    mediaRatio: 0.75,
+                    mediaRatio: 1.66,
                     byline: false,
                     timestamp: false,
                     actions: false
                 })
+    .c--bg-jet
+        .l--grid.l--margin-top-xl.l--padding-top-xl
+            .l--grid-row
+                +column()
+                    +card(locals.articles[10], {
+                        colorTheme: 'inverted',
+                        actions: false,
+                        orientation: 'horizontal'
+                    })
+                    +card(locals.articles[11], {
+                        colorTheme: 'inverted',
+                        size: 'l',
+                        actions: false
+                    })
+                    +card(locals.articles[12], {
+                        colorTheme: 'inverted',
+                        size: 'l',
+                        actions: false
+                    })
+                +column()
+                    +card(locals.articles[13], {
+                        colorTheme: 'inverted',
+                        size: 'l',
+                        actions: false
+                    })
+                    +card(locals.articles[14], {
+                        colorTheme: 'inverted',
+                        size: 'l',
+                        actions: false
+                    })
+                    +card(locals.articles[15], {
+                        colorTheme: 'inverted',
+                        size: 'l',
+                        actions: false
+                    })

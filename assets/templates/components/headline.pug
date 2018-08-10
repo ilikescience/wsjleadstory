@@ -1,0 +1,22 @@
+include flashLine
+
+mixin headline(data, params)
+    if data.ornament === 'ahed'
+        | <div class="card--ahed-title l--padding-top-m l--padding-right-l l--padding-left-l l--margin-bottom-m">
+    if data.flashline
+        +flashline(data)
+    .card--headline.t--family-condensed.l--margin-bottom-m(
+        class=`
+            t--size-${data.size} 
+            ${data.size === 's' ? 't--family-serif' : 't--family-condensed'} 
+            ${data.storyType === 'News' || data.size === 's' ? 't--weight-bold' : 't--weight-normal'} 
+            ${data.storyType === 'Opinion' ? 't--style-italic' : ''}`
+        ) #{data.title}
+    if data.ornament === 'ahed'
+        | </div>
+        .card--ahed-asterisk.l--margin-bottom-m
+            +icon('asterisk')
+            +icon('asterisk')
+            +icon('asterisk')
+    if data.ornament === 'leder'
+            .card--leder-ornament

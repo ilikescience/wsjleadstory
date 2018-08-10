@@ -1,0 +1,15 @@
+mixin column(inputData, props)
+    -
+        var data = Object.assign({
+            span: 1,
+            borders: {}
+            }, inputData, params);
+        var borderClass = '';
+        for (const border in data.borders) {
+            borderClass += `l--border-${border}-${data.borders[border]} `
+        }
+    .l--grid-col(class=`
+        l--grid-col-span-${data.span}
+        ${borderClass}
+    `)
+        block

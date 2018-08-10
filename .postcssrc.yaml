@@ -1,4 +1,10 @@
 plugins:
   postcss-import: {}
   postcss-mixins: {}
-  postcss-cssnext: {}
+  postcss-cssnext: {                  
+    features: {
+      customProperties: {
+        warnings: false
+      }
+    }
+  }

@@ -1,9 +1,11 @@
 include icon
 include cardAction
+include headline
 
 mixin card(inputData, params)
     -
         var data = Object.assign({
+            colorTheme: 'standard',
             alignment: 'left',
             size: 'm',
             columns: 1,
@@ -16,110 +18,73 @@ mixin card(inputData, params)
             storyType : 'News',
             trending : false,
             ornament: false,
-            headlinePosition: 'bottom'
+            headlinePosition: 'bottom',
+            borders: { bottom: 'light' }
             }, inputData, params)
-    -
         var now = new Date().getTime();
         var timestamp = '';
         if (now - data.timestamp < 3600000) {
             timestamp = `${Math.round((now - data.timestamp) / 60000)} minutes ago`;
         }
+        var borderClass = '';
+        for (const border in data.borders) {
+            borderClass += `l--border-${border}-${data.borders[border]} `
+        }
     .card(
         class=`
+            card--theme-${data.colorTheme}
             card--${data.size}
             card--${data.orientation}
             card--${data.mediaPlacement}
             card--${data.actions ? 'has-actions' : 'no-actions'}
             l--grid-col-span-${data.columns}
-            l--grid-row-span-${data.rows}`
+            l--grid-row-span-${data.rows}
+            ${borderClass}`
         data-sbid=data.id
     )
-        .card--content.l--padding-bottom-m
-            .card--text(class=`${data.alignment === 'center' ? 'card--text-center' : 'card--text-left' }`)
-                if data.ornament === 'ahed'
-                    .card--ahed-title.l--padding-top-m.l--padding-right-l.l--padding-left-l.l--margin-bottom-l
-                        .card--headline.t--family-condensed.l--margin-bottom-s(
-                            class=`
-                                t--size-${data.size} 
-                                t--weight-normal
-                                t--style-italic`
-                            ) #{data.title}
-                else 
-                    if data.mediaPlacement === 'behind'
-                        .card--image.card--image-behind.l--margin-bottom-m(
-                                class=`card--image-behind-headline-${data.headlinePosition}`
-                                style=`background-image:url(${data.image}); padding-top: calc((1 / ${data.mediaRatio}) * 100%)`
-                            )
-                            .card--image-behind-overlay
-                            .card--image-behind-content
-                                if data.flashline
-                                    .card--flashline.t--family-sansCondensed.t--size-xs.t--weight-light.t--transform-uppercase.t--kering-m.l--margin-bottom-s #{data.flashline}
-                                .card--headline.t--family-condensed.l--margin-bottom-m(
-                                    class=`
-                                        t--size-${data.size} 
-                                        ${data.size === 's' ? 't--family-serif' : 't--family-condensed'} 
-                                        ${data.storyType === 'News' || data.size === 's' ? 't--weight-bold' : 't--weight-normal'} 
-                                        ${data.storyType === 'Opinion' ? 't--style-italic' : ''}`
-                                    ) #{data.title}
-                                if data.ornament === 'leder'
-                                    .card--leder-ornament
-                                if data.summary
-                                    .card--summary.t--family-serif.t--size-s.t--color-nickel.l--margin-bottom-m #{data.summary}
-                                if data.byline || timestamp
-                                    .card--byline.t--family-sansCondensed.t--size-s.t--weight-light.t--color-nickel
-                                        if data.byline
-                                            if data.avatar
-                                                .card--byline-avatar
-                                                    img(src=data.avatar)
-                                            .card--byline-attribution by #{data.byline}
-                                        if data.byline && timestamp 
-                                            .card--byline-divider &nbsp;·&nbsp;
-                                        if timestamp 
-                                            .card--byline-timestamp #{timestamp}
-                    else
-                        if data.flashline
-                            .card--flashline.t--family-sansCondensed.t--size-xs.t--weight-light.t--transform-uppercase.t--kering-m.l--margin-bottom-s #{data.flashline}
-                        .card--headline.t--family-condensed.l--margin-bottom-m(
-                            class=`
-                                t--size-${data.size} 
-                                ${data.size === 's' ? 't--family-serif' : 't--family-condensed'} 
-                                ${data.storyType === 'News' || data.size === 's' ? 't--weight-bold' : 't--weight-normal'} 
-                                ${data.storyType === 'Opinion' ? 't--style-italic' : ''}`
-                            ) #{data.title}
-                        if data.ornament === 'ahed'
-                            .card--ahed-asterisk.l--margin-bottom-m
-                                +icon('asterisk')
-                                +icon('asterisk')
-                                +icon('asterisk')
-                        if data.ornament === 'leder'
-                            .card--leder-ornament
-                        if data.image && data.mediaPlacement === 'middle'
-                            .card--image.l--margin-top-m.l--margin-bottom-m
-                                img(src=data.image)
-                        if data.summary
-                            .card--summary.t--family-serif.t--size-s.t--color-nickel.l--margin-bottom-m #{data.summary}
-                        if data.byline || timestamp
-                            .card--byline.t--family-sansCondensed.t--size-s.t--weight-light.t--color-nickel
-                                if data.byline
-                                    if data.avatar
-                                        .card--byline-avatar
-                                            img(src=data.avatar)
-                                    .card--byline-attribution by #{data.byline}
-                                if data.byline && timestamp 
-                                    .card--byline-divider &nbsp;·&nbsp;
-                                if timestamp 
-                                    .card--byline-timestamp #{timestamp}
-                        if data.trending
-                            .card--trending.t--family-sansCondensed.t--color-green-light.l--margin-top-s.t--size-xs
-                                .card--trending-icon
-                                    +icon('trending')
-                                .card--trending-label.l--margin-left-s Trending
+        .card--content.l--padding-bottom-s(
+            class=`
+                ${data.mediaPlacement === 'behind' ? 'card--text-inset' : ''}`
+            style=`
+                ${data.mediaPlacement === 'behind' ? `
+                    background-image:url(${data.image});
+                    padding-top: calc((1 / ${data.mediaRatio}) * 100%)` 
+                    : ``
+                }`
+        )
+            .card--text(
+                class=`
+                    ${data.alignment === 'center' ? 'card--text-center' : 'card--text-left' }
+                    card--text-${data.headlinePosition}`
+                )
+                +headline(data)
+                if data.image && data.mediaPlacement === 'middle'
+                    .card--image.l--margin-top-m.l--margin-bottom-m
+                        img(src=data.image)
+                if data.summary
+                    .card--summary.t--family-serif.t--size-s.l--margin-bottom-m #{data.summary}
+                if data.byline || timestamp
+                    .card--byline.t--family-sansCondensed.t--size-s.t--weight-light.t--color-nickel
+                        if data.byline
+                            if data.avatar
+                                .card--byline-avatar
+                                    img(src=data.avatar)
+                            .card--byline-attribution by #{data.byline}
+                        if data.byline && timestamp 
+                            .card--byline-divider &nbsp;·&nbsp;
+                        if timestamp 
+                            .card--byline-timestamp #{timestamp}
+                if data.trending
+                    .card--trending.t--family-sansCondensed.t--color-green-light.l--margin-top-s.t--size-xs
+                        .card--trending-icon
+                            +icon('trending')
+                        .card--trending-label.l--margin-left-s Trending
 
-                        if data.orientation === 'horizontal' && data.actions
-                            .card--actions.l--margin-top-s.l--padding-top-s
-                                +cardAction()
-                                +cardAction({icon: 'share', label: 'Share'})
-                                +cardAction({iconAlignment: 'right', icon: 'comments', label: data.commentCount})
+                if data.orientation === 'horizontal' && data.actions
+                    .card--actions.l--margin-top-s.l--padding-top-s
+                        +cardAction()
+                        +cardAction({icon: 'share', label: 'Share'})
+                        +cardAction({iconAlignment: 'right', icon: 'comments', label: data.commentCount})
             if data.image && data.mediaPlacement !== 'middle' && data.mediaPlacement !== 'behind'
                 .card--image
                     img(src=data.image)

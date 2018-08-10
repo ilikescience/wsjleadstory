@@ -41,9 +41,9 @@ fetch(url)
                         article.articleSection === 'Real Estate' ||
                         article.articleSection === 'Slideshow' ) {
                         thisArticle.storyType = 'Life';
-                    } else if(article.storyType === 'Decos and Corrections' ||
-                        article.storyType === 'Opinion' ||
-                        article.storyType === '') {
+                    } else if(article.articleSection === 'Decos and Corrections' ||
+                        article.articleSection === 'Opinion' ||
+                        article.articleSection === '') {
                         // skip these
                     }
                     else {
