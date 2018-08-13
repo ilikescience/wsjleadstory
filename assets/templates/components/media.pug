@@ -1,0 +1,8 @@
+include icon
+
+mixin media(data, params)
+    .card--media(class=`card--media-${data.mediaType} card--media-placement-${data.mediaPlacement}`)
+        if (data.mediaType === 'video')
+            .card--media-icon
+                +icon('play')
+        img(src=data.media)

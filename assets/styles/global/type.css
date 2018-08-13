@@ -192,7 +192,6 @@
 .t--color-green { color: var(--c--green); }
 .t--color-green-light { color: var(--c--green-light); }
 
-
 .t--size-xl {
     font-size: var(--t--size-xl);
     line-height: var(--t--size-xl);
@@ -215,7 +214,7 @@
 
 .t--size-xs {
     font-size: var(--t--size-xs);
-    line-height: var(--t--size-xs);
+    line-height: var(--t--size-s);
 }
 
 .t--kering-m { letter-spacing: 0.5px; }

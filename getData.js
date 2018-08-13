@@ -16,21 +16,22 @@ fetch(url)
                         id: article.articleId,
                         title: article.headline,
                         summary: article.summary,
-                        image: false,
+                        media: false,
                         byline: article.byline,
                         flashline: article.hasOwnProperty('flashline') && article.flashline ? article.flashline.flashline : '',
                         category: article.articleSection,
                         storyType: article.articleSection,
                         avatar: false,
-                        timestamp: article.timestamp
+                        timestamp: article.timestamp,
+                        bullets: []
                     }
                     if (article.hasOwnProperty('arthurV2Image')) {
-                        thisArticle.image = article.arthurV2Image.location;
+                        thisArticle.media = article.arthurV2Image.location;
                     } else if (article.hasOwnProperty('image') && 
                         article.image && 
                         article.image.widths &&
                         article.image.widths['620']) {
-                        thisArticle.image = article.image.widths['620'].url;
+                        thisArticle.media = article.image.widths['620'].url;
                     }
                     if (article.hasOwnProperty('authors') && article.authors[0].hasOwnProperty('hedcutImage')) {
                         thisArticle.avatar = article.authors[0].hedcutImage;
@@ -48,6 +49,19 @@ fetch(url)
                     }
                     else {
                         thisArticle.storyType = 'News'
+                    }
+
+                    if (article.hasOwnProperty('bullets')) {
+                        for (const item of article.bullets) {
+                            if (item.html[1].children.length > 0 && item.html[1].children[0].hasOwnProperty('text')) {
+                                thisArticle.bullets.push(
+                                    {
+                                        title: item.html[1].children[0].text,
+                                        type: item.hasOwnProperty('iconType') ? item.iconType : 'story'
+                                    }
+                                )
+                            }
+                        }
                     }
                     data.articles.push(thisArticle);
                 })

@@ -1,6 +1,7 @@
 include icon
 include cardAction
 include headline
+include media
 
 mixin card(inputData, params)
     -
@@ -11,15 +12,18 @@ mixin card(inputData, params)
             columns: 1,
             rows: 1,
             orientation: 'vertical',
-            mediaPlacement: 'first',
+            mediaPlacement: 0,
             mediaRatio: 1.5,
             actions: true,
             commentCount: Math.floor(Math.random() * 100),
             storyType : 'News',
             trending : false,
             ornament: false,
+            media: false,
+            mediaType: 'image',
             headlinePosition: 'bottom',
-            borders: { bottom: 'light' }
+            borders: { bottom: 'light' },
+            bullets: []
             }, inputData, params)
         var now = new Date().getTime();
         var timestamp = '';
@@ -35,67 +39,63 @@ mixin card(inputData, params)
             card--theme-${data.colorTheme}
             card--${data.size}
             card--${data.orientation}
-            card--${data.mediaPlacement}
+            card--placement-${data.mediaPlacement}
             card--${data.actions ? 'has-actions' : 'no-actions'}
             l--grid-col-span-${data.columns}
             l--grid-row-span-${data.rows}
-            ${borderClass}`
+            ${borderClass}
+            ${data.alignment === 'center' ? 'card--text-center' : 'card--text-left' }
+            ${data.mediaPlacement === 'behind' ? 'card--inset' : '' }`
+         style=`
+                ${data.mediaPlacement === 'behind' ? `
+                    background-image:url(${data.media});
+                    padding-top: calc((1 / ${data.mediaRatio}) * 100%)` 
+                    : ``
+                }`
         data-sbid=data.id
     )
         .card--content.l--padding-bottom-m(
             class=`
-                ${data.mediaPlacement === 'behind' ? 'card--text-inset' : ''}`
-            style=`
-                ${data.mediaPlacement === 'behind' ? `
-                    background-image:url(${data.image});
-                    padding-top: calc((1 / ${data.mediaRatio}) * 100%)` 
-                    : ``
-                }`
-        )
-            .card--text(
-                class=`
-                    ${data.alignment === 'center' ? 'card--text-center' : 'card--text-left' }
-                    card--text-${data.headlinePosition}`
-                )
-                +headline(data)
-                if data.image && data.mediaPlacement === 'middle'
-                    .card--image.l--margin-top-m.l--margin-bottom-m
-                        img(src=data.image)
-                if data.summary
-                    .card--summary.t--family-serif.t--size-s.l--margin-bottom-s #{data.summary}
-                if data.byline || timestamp
-                    .card--byline.t--family-sansCondensed.t--size-s.t--weight-light.t--color-nickel
-                        if data.byline
-                            if data.avatar
-                                .card--byline-avatar
-                                    img(src=data.avatar)
-                            .card--byline-attribution by #{data.byline}
-                        if data.byline && timestamp 
-                            .card--byline-divider &nbsp;·&nbsp;
-                        if timestamp 
-                            .card--byline-timestamp #{timestamp}
-                if data.trending
-                    .card--trending.t--family-sansCondensed.t--color-green-light.l--margin-top-s.t--size-xs
-                        .card--trending-icon
-                            +icon('trending')
-                        .card--trending-label.l--margin-left-s Trending
-                if data.bullets
-                    ul.card--bullets
-                        each item in data.bullets
-                            li.card--bullets-item.l--margin-bottom-m
-                                .card--bullets-item-icon.t--color-nickel
-                                    +icon('bullet')
-                                .card--bullets-item-title.t--size-xs.t--weight-medium= item.title
+                ${data.mediaPlacement === 'behind' ? 'card--text-inset' : ''}
+                card--content-${data.headlinePosition}`
+            )
+            +headline(data)
+            if data.media && data.mediaPlacement === 'middle'
+                +media(data)
+            if data.summary
+                .card--summary.t--family-serif.t--size-s.l--margin-bottom-s #{data.summary}
+            if data.byline || timestamp
+                .card--byline.t--family-sansCondensed.t--size-s.t--weight-light
+                    if data.byline
+                        if data.avatar
+                            .card--byline-avatar
+                                img(src=data.avatar)
+                        .card--byline-attribution by #{data.byline}
+                    if data.byline && timestamp 
+                        .card--byline-divider &nbsp;·&nbsp;
+                    if timestamp 
+                        .card--byline-timestamp #{timestamp}
+            if data.trending
+                .card--trending.t--family-sansCondensed.t--color-green-light.l--margin-top-s.t--size-xs
+                    .card--trending-icon
+                        +icon('trending')
+                    .card--trending-label.l--margin-left-s Trending
+            if data.bullets
+                ul.card--bullets
+                    each item in data.bullets
+                        li.card--bullets-item.l--margin-bottom-s
+                            .card--bullets-item-icon
+                                +icon('bullet')
+                            .card--bullets-item-title.t--size-xs.t--weight-medium= item.title
 
 
-                if data.orientation === 'horizontal' && data.actions
-                    .card--actions.l--margin-top-s.l--padding-top-s
-                        +cardAction()
-                        +cardAction({icon: 'share', label: 'Share'})
-                        +cardAction({iconAlignment: 'right', icon: 'comments', label: data.commentCount})
-            if data.image && data.mediaPlacement !== 'middle' && data.mediaPlacement !== 'behind'
-                .card--image
-                    img(src=data.image)
+            if data.orientation === 'horizontal' && data.actions
+                .card--actions.l--margin-top-s.l--padding-top-s
+                    +cardAction()
+                    +cardAction({icon: 'share', label: 'Share'})
+                    +cardAction({iconAlignment: 'right', icon: 'comments', label: data.commentCount})
+            if data.media && data.mediaPlacement !== 'middle' && data.mediaPlacement !== 'behind'
+                +media(data)
         if data.orientation === 'vertical' && data.actions
             .card--actions.l--margin-top-s.l--padding-top-s
                 +cardAction()
