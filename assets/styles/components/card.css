@@ -173,7 +173,7 @@
 .card--byline-attribution,
 .card--byline-divider,
 .card--byline-timestamp {
-    display: inline-block;
+    display: inline;
     vertical-align: middle;
 }
 
@@ -325,5 +325,27 @@
                     var(--gradient-end) 100%
                 );
         }
+    }
+}
+
+.card--bullets {
+    margin: var(--l--space-l) 0 0;
+    padding: 0;
+}
+
+.card--bullets-item {
+    position: relative;
+    padding-left: var(--l--space-l);
+}
+
+.card--bullets-item-icon {
+    position: absolute;
+    top: -1px;
+    left: 2px;
+
+    & .icon {
+        width: 12px;
+        height: 12px;
+        fill: currentColor;
     }
 }

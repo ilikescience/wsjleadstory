@@ -42,7 +42,7 @@ mixin card(inputData, params)
             ${borderClass}`
         data-sbid=data.id
     )
-        .card--content.l--padding-bottom-s(
+        .card--content.l--padding-bottom-m(
             class=`
                 ${data.mediaPlacement === 'behind' ? 'card--text-inset' : ''}`
             style=`
@@ -62,7 +62,7 @@ mixin card(inputData, params)
                     .card--image.l--margin-top-m.l--margin-bottom-m
                         img(src=data.image)
                 if data.summary
-                    .card--summary.t--family-serif.t--size-s.l--margin-bottom-m #{data.summary}
+                    .card--summary.t--family-serif.t--size-s.l--margin-bottom-s #{data.summary}
                 if data.byline || timestamp
                     .card--byline.t--family-sansCondensed.t--size-s.t--weight-light.t--color-nickel
                         if data.byline
@@ -79,6 +79,14 @@ mixin card(inputData, params)
                         .card--trending-icon
                             +icon('trending')
                         .card--trending-label.l--margin-left-s Trending
+                if data.bullets
+                    ul.card--bullets
+                        each item in data.bullets
+                            li.card--bullets-item.l--margin-bottom-m
+                                .card--bullets-item-icon.t--color-nickel
+                                    +icon('bullet')
+                                .card--bullets-item-title.t--size-xs.t--weight-medium= item.title
+
 
                 if data.orientation === 'horizontal' && data.actions
                     .card--actions.l--margin-top-s.l--padding-top-s

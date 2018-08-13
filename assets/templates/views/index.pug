@@ -16,19 +16,25 @@ block content
                 span: 3,
                 borders: {
                     right: 'light'
-                }
+                },
+                justified: true
             })
                 +card(locals.articles[0], {
-                    size: 'l',
+                    size: 'xl',
                     image: false,
                     actions: false,
                 })
                 +card(locals.articles[1], {
                     actions: false,
                     image: false,
-                    borders: {
-                        bottom: 'heavy'
-                    }
+                    bullets: [
+                        {
+                            title: 'Stocks Drop as Currency Crisis Roils Turkey'
+                        },
+                        {
+                            title: 'Why Turkey’s Trials Ripple Into Europe'
+                        }
+                    ]
                 })
                 +card(locals.articles[2], {
                     actions: false,
@@ -42,28 +48,38 @@ block content
             
             +column({span: 5})
                 +card(locals.articles[4], {
-                    size: 'xl'
+                    size: 'l',
+                    image: false,
+                    actions: false,
+                    bullets: [
+                        {
+                            title: 'For Uber and Airbnb, New York City Turns Foe'
+                        },
+                        {
+                            title: 'New York’s Ride-Hailing Battleground Moves to the Outer Boroughs'
+                        }
+                    ]
                 })
                 +card(locals.articles[5], {
-                    byline: false,
-                    actions: false,
-                    orientation: 'horizontal',
-                    mediaPlacement: 'last',
+                    size: 'l'
                 })
                 +card(locals.articles[6], {
-                    byline: false,
                     actions: false,
-                    orientation: 'horizontal',
-                    mediaPlacement: 'last',
                     image: false,
-                    borders: false
+                    borders: false,
+                    bullets: [
+                        {
+                            title: 'Monsanto Hit by $289 Million Verdict in Cancer Case'
+                        }
+                    ]
                 })
 
             +column({
                 span: 2,
                 borders: {
                     left: 'light'
-                }
+                },
+                justified: true
             })
                 +card(locals.articles[7], {
                     summary: false,
@@ -154,7 +170,7 @@ block content
                     size: 'l',
                     ornament: 'ahed',
                     mediaPlacement: 'last',
-                    image: 'https://cl.ly/2q2w3a3v0z1m/Screen%20Shot%202018-08-10%20at%2012.27.50%20PM.png'
+                    image: 'https://d3vv6lp55qjaqc.cloudfront.net/items/0O0I0X3C2U2T1W2Z0d35/Screen%20Shot%202018-08-13%20at%209.03.00%20AM.png'
                 })
             +column({span: 4})
                 +card(life[1], {
@@ -188,7 +204,7 @@ block content
                                 summary: false
                             })
                         +column()
-                            +card(life[6], {
+                            +card(life[2], {
                                 colorTheme: 'inverted',
                                 mediaPlacement: 'behind',
                                 mediaRatio: 0.66,
@@ -197,7 +213,6 @@ block content
                             })
             +column()
                 +card(life[3], {
-                    colorTheme: 'inverted',
                     mediaPlacement: 'behind',
                     size: 'xl',
                     mediaRatio: 1,
@@ -206,7 +221,7 @@ block content
                     headlinePosition: 'bottom',
                     actions: false
                 })
-                +card(life[7], {
+                +card(life[4], {
                     colorTheme: 'inverted',
                     mediaPlacement: 'behind',
                     size: 'l',

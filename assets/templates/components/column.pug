@@ -11,5 +11,6 @@ mixin column(inputData, props)
     .l--grid-col(class=`
         l--grid-col-span-${data.span}
         ${borderClass}
+        ${data.justified ? 'l--grid-col-justify' : ''}
     `)
         block
