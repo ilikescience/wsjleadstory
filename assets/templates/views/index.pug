@@ -10,7 +10,7 @@ block content
     - var life = locals.articles.filter((article) => article.storyType === 'Life')
     .l--grid.l--margin-top-xl
         .l--grid-row
-            +strap('Spotlight Seven')
+            +strap('Spotlight Eight')
         .l--grid-row
             +column({
                 span: 3,
@@ -48,7 +48,7 @@ block content
                 +card(locals.articles[5], {
                     actions: false,
                     orientation: 'horizontal',
-                    mediaPlacement: 2
+                    mediaPlacement: 'first'
                 })
                 +card(locals.articles[6], {
                     actions: false,
@@ -89,14 +89,6 @@ block content
                     bullets: false
                 })
                 +card(locals.articles[10], {
-                    summary: false,
-                    byline: false,
-                    actions: false,
-                    timestamp: false,
-                    borders: false,
-                    bullets: false
-                })
-                +card(locals.articles[11], {
                     summary: false,
                     byline: false,
                     actions: false,
@@ -252,35 +244,36 @@ block content
     .c--bg-jet
         .l--grid.l--margin-top-xl.l--padding-top-xl
             .l--grid-row
-                +column()
+                +column({
+                    span: 2,
+                    colorTheme: 'inverted'
+                    })
+                    +card(life[0], {
+                        colorTheme: 'inverted',
+                        mediaPlacement: 'behind',
+                        borders: false,
+                        mediaType: 'video'
+                    })
+                +column({colorTheme: 'inverted'})
                     +card(locals.articles[10], {
                         colorTheme: 'inverted',
                         actions: false,
-                        orientation: 'horizontal'
+                        orientation: 'horizontal',
+                        mediaType: 'video',
+                        summary: false,
+                        byline: false
                     })
                     +card(locals.articles[11], {
                         colorTheme: 'inverted',
-                        size: 'l',
-                        actions: false
+                        actions: false,
+                        orientation: 'horizontal',
+                        summary: false,
+                        byline: false
                     })
                     +card(locals.articles[12], {
                         colorTheme: 'inverted',
-                        size: 'l',
-                        actions: false
-                    })
-                +column()
-                    +card(locals.articles[13], {
-                        colorTheme: 'inverted',
-                        size: 'l',
-                        actions: false
-                    })
-                    +card(locals.articles[14], {
-                        colorTheme: 'inverted',
-                        size: 'l',
-                        actions: false
-                    })
-                    +card(locals.articles[15], {
-                        colorTheme: 'inverted',
-                        size: 'l',
-                        actions: false
+                        actions: false,
+                        orientation: 'horizontal',
+                        summary: false,
+                        byline: false
                     })

@@ -2,6 +2,7 @@ mixin column(inputData, props)
     -
         var data = Object.assign({
             span: 1,
+            colorTheme: 'standard',
             borders: {}
             }, inputData, params);
         var borderClass = '';
@@ -10,6 +11,7 @@ mixin column(inputData, props)
         }
     .l--grid-col(class=`
         l--grid-col-span-${data.span}
+        card--theme-${data.colorTheme}
         ${borderClass}
         ${data.justified ? 'l--grid-col-justify' : ''}
     `)

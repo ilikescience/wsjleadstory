@@ -12,7 +12,7 @@ mixin card(inputData, params)
             columns: 1,
             rows: 1,
             orientation: 'vertical',
-            mediaPlacement: 0,
+            mediaPlacement: 'first',
             mediaRatio: 1.5,
             actions: true,
             commentCount: Math.floor(Math.random() * 100),
@@ -23,7 +23,7 @@ mixin card(inputData, params)
             mediaType: 'image',
             headlinePosition: 'bottom',
             borders: { bottom: 'light' },
-            bullets: []
+            bullets: false
             }, inputData, params)
         var now = new Date().getTime();
         var timestamp = '';
@@ -59,42 +59,38 @@ mixin card(inputData, params)
                 ${data.mediaPlacement === 'behind' ? 'card--text-inset' : ''}
                 card--content-${data.headlinePosition}`
             )
-            +headline(data)
-            if data.media && data.mediaPlacement === 'middle'
-                +media(data)
-            if data.summary
-                .card--summary.t--family-serif.t--size-s.l--margin-bottom-s #{data.summary}
-            if data.byline || timestamp
-                .card--byline.t--family-sansCondensed.t--size-s.t--weight-light
-                    if data.byline
-                        if data.avatar
-                            .card--byline-avatar
-                                img(src=data.avatar)
-                        .card--byline-attribution by #{data.byline}
-                    if data.byline && timestamp 
-                        .card--byline-divider &nbsp;·&nbsp;
-                    if timestamp 
-                        .card--byline-timestamp #{timestamp}
-            if data.trending
-                .card--trending.t--family-sansCondensed.t--color-green-light.l--margin-top-s.t--size-xs
-                    .card--trending-icon
-                        +icon('trending')
-                    .card--trending-label.l--margin-left-s Trending
-            if data.bullets
-                ul.card--bullets
-                    each item in data.bullets
-                        li.card--bullets-item.l--margin-bottom-s
-                            .card--bullets-item-icon
-                                +icon('bullet')
-                            .card--bullets-item-title.t--size-xs.t--weight-medium= item.title
-
-
-            if data.orientation === 'horizontal' && data.actions
-                .card--actions.l--margin-top-s.l--padding-top-s
-                    +cardAction()
-                    +cardAction({icon: 'share', label: 'Share'})
-                    +cardAction({iconAlignment: 'right', icon: 'comments', label: data.commentCount})
-            if data.media && data.mediaPlacement !== 'middle' && data.mediaPlacement !== 'behind'
+            .card--text
+                +headline(data)
+                if data.media && data.mediaPlacement === 'middle'
+                    +media(data)
+                if data.summary
+                    .card--summary.t--family-serif.t--size-s.l--margin-bottom-s #{data.summary}
+                if data.byline || timestamp
+                    .card--byline.t--family-sansCondensed.t--size-s.t--weight-light
+                        if data.byline
+                            if data.avatar
+                                .card--byline-avatar
+                                    img(src=data.avatar)
+                            .card--byline-attribution by #{data.byline}
+                        if data.byline && timestamp 
+                            .card--byline-divider &nbsp;·&nbsp;
+                        if timestamp 
+                            .card--byline-timestamp #{timestamp}
+                if data.trending
+                    .card--trending.t--family-sansCondensed.t--color-green-light.l--margin-top-s.t--size-xs
+                        .card--trending-icon
+                            +icon('trending')
+                        .card--trending-label.l--margin-left-s Trending
+                if data.bullets.length > 0
+                    ul.card--bullets
+                        each item in data.bullets
+                            li.card--bullets-item.l--margin-bottom-s
+                                .card--bullets-item-icon
+                                    +icon('bullet')
+                                .card--bullets-item-title.t--size-xs.t--weight-medium= item.title
+                if data.media && ['left', 'right', 'middle'].includes(data.mediaPlacement)
+                    +media(data)
+            if data.media && ['first', 'last'].includes(data.mediaPlacement)
                 +media(data)
         if data.orientation === 'vertical' && data.actions
             .card--actions.l--margin-top-s.l--padding-top-s
