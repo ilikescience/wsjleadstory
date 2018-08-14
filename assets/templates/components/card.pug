@@ -28,7 +28,7 @@ mixin card(inputData, params)
         var now = new Date().getTime();
         var timestamp = '';
         if (now - data.timestamp < 3600000) {
-            timestamp = `${Math.round((now - data.timestamp) / 60000)} minutes ago`;
+            timestamp = `${Math.round((now - data.timestamp) / 60000)} mins ago`;
         }
         var borderClass = '';
         for (const border in data.borders) {
@@ -54,15 +54,12 @@ mixin card(inputData, params)
                 }`
         data-sbid=data.id
     )
-        .card--content.l--padding-bottom-m(
-            class=`
+        .card--content
+            .card--text(class=`
                 ${data.mediaPlacement === 'behind' ? 'card--text-inset' : ''}
-                card--content-${data.headlinePosition}`
+                card--text-${data.headlinePosition}`
             )
-            .card--text
                 +headline(data)
-                if data.media && data.mediaPlacement === 'middle'
-                    +media(data)
                 if data.summary
                     .card--summary.t--family-serif.t--size-s.l--margin-bottom-s #{data.summary}
                 if data.byline || timestamp
@@ -72,10 +69,6 @@ mixin card(inputData, params)
                                 .card--byline-avatar
                                     img(src=data.avatar)
                             .card--byline-attribution by #{data.byline}
-                        if data.byline && timestamp 
-                            .card--byline-divider &nbsp;·&nbsp;
-                        if timestamp 
-                            .card--byline-timestamp #{timestamp}
                 if data.trending
                     .card--trending.t--family-sansCondensed.t--color-green-light.l--margin-top-s.t--size-xs
                         .card--trending-icon
@@ -83,18 +76,30 @@ mixin card(inputData, params)
                         .card--trending-label.l--margin-left-s Trending
                 if data.bullets.length > 0
                     ul.card--bullets
-                        each item in data.bullets
-                            li.card--bullets-item.l--margin-bottom-s
-                                .card--bullets-item-icon
-                                    +icon('bullet')
-                                .card--bullets-item-title.t--size-xs.t--weight-medium= item.title
+                        each item, index in data.bullets
+                            +card({
+                                title: item.title,
+                                actions: false,
+                                size: 's',
+                                media: false,
+                                bullets: false,
+                                byline: false,
+                                timestamp: false,
+                                summary: false,
+                                borders: {
+                                    top: index === 0 ? 'light' : false,
+                                    bottom: index === (data.bullets.length - 1) ? false : 'light'
+                                }
+                            })
                 if data.media && ['left', 'right', 'middle'].includes(data.mediaPlacement)
                     +media(data)
-            if data.media && ['first', 'last'].includes(data.mediaPlacement)
+                if data.actions
+                    .card--footer
+                        if timestamp 
+                            .card--timestamp.t--family-sansCondensed #{timestamp}
+                        +cardAction()
+                        +cardAction({icon: 'share'})
+                        +cardAction({icon: 'comments', label: data.commentCount})
+            if data.media && ['first', 'last', 'behind'].includes(data.mediaPlacement)
                 +media(data)
-        if data.orientation === 'vertical' && data.actions
-            .card--actions.l--margin-top-s.l--padding-top-s
-                +cardAction()
-                +cardAction({icon: 'share', label: 'Share'})
-                +cardAction({iconAlignment: 'right', icon: 'comments', label: data.commentCount})
 

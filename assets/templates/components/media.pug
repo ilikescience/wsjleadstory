@@ -5,4 +5,4 @@ mixin media(data, params)
         if (data.mediaType === 'video')
             .card--media-icon
                 +icon('play')
-        img(src=data.media)
+        img(src=data.media class=`${data.mediaPlacement === 'behind' ? 'l--visuallyhidden' : ''}`)

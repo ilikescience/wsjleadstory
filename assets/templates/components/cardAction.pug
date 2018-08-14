@@ -1,9 +1,9 @@
 include icon
 
 mixin cardAction(inputData)
-    - var data = Object.assign({iconAlignment: 'left', icon: 'bookmark', label: 'Save'}, inputData)
-    .card--action(class=`card--action-${data.iconAlignment}`)
+    - var data = Object.assign({icon: 'bookmark', label: ''}, inputData)
+    .card--action(class=`card--action-${data.icon}`)
+        if data.label
+            .card--action-label.t--family-sansCondensed.t--color-nickel.t--weight-light= data.label
         .card--action-icon
             +icon(data.icon)
-        if data.label
-            .card--action-label.t--family-sansCondensed.t--size-xs.t--color-nickel.t--weight-light= data.label

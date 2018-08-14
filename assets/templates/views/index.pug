@@ -14,98 +14,112 @@ block content
         .l--grid-row
             +column({
                 span: 3,
+                justified: true,
                 borders: {
                     right: 'light'
-                },
-                justified: true
+                }
             })
                 +card(locals.articles[0], {
                     size: 'l',
                     media: false,
-                    actions: false,
-                    trending: true
+                    borders: {
+                        bottom: 'heavy'
+                    }
                 })
                 +card(locals.articles[1], {
-                     size: 'l',
-                    actions: false,
                     media: false,
                 })
                 +card(locals.articles[2], {
-                    actions: false,
                     media: false
                 })
                 +card(locals.articles[3], {
-                    actions: false,
                     media: false,
-                    borders: false
+                    borders: false,
                 })
             
-            +column({span: 5})
+            +column({span: 4})
                 +card(locals.articles[4], {
-                    size: 'l',
-                    actions: true
+                    size: 'xl',
+                    bullets: false
                 })
                 +card(locals.articles[5], {
-                    actions: false,
-                    orientation: 'horizontal',
-                    mediaPlacement: 'first'
+                    media: false,
+                    bullets: false
                 })
                 +card(locals.articles[6], {
-                    actions: false,
-                    media: false,
+                    orientation: 'horizontal',
+                    mediaPlacement: 'left',
                     borders: false,
                 })
 
             +column({
                 span: 2,
+                justified: true,
                 borders: {
                     left: 'light'
-                },
-                justified: true
+                }
             })
                 +card(locals.articles[7], {
-                    mediaRatio: 0.75,
                     summary: false,
                     byline: false,
-                    actions: false,
                     timestamp: false,
                     borders: false,
-                    bullets: false
-                })
-                +card(locals.articles[8], {
-                    summary: false,
-                    byline: false,
-                    actions: false,
-                    timestamp: false,
-                    borders: false,
-                    bullets: false
+                    bullets: false,
+                    actions: false
                 })
                 +card(locals.articles[9], {
                     summary: false,
                     byline: false,
-                    actions: false,
                     timestamp: false,
                     borders: false,
-                    bullets: false
+                    bullets: false,
+                    actions: false,
+                    borders: {
+                        bottom: 'heavy'
+                    }
+                })
+                +card(locals.articles[8], {
+                    size: 's',
+                    media: false,
+                    byline: false,
+                    timestamp: false,
+                    bullets: false,
+                    actions: false
                 })
                 +card(locals.articles[10], {
-                    summary: false,
+                    size: 's',
+                    media: false,
                     byline: false,
-                    actions: false,
                     timestamp: false,
-                    borders: false,
-                    bullets: false
+                    bullets: false,
+                    actions: false
+                })
+                +card(locals.articles[18], {
+                    size: 's',
+                    media: false,
+                    byline: false,
+                    timestamp: false,
+                    bullets: false,
+                    actions: false
                 })
     .l--grid.l--margin-top-xl
         .l--grid-row
             +strap('Package')
         .l--grid-row
+            +column()
+                +card(locals.articles[6], {
+                    orientation: 'horizontal',
+                    size: 'l',
+                    borders: false
+                })
+        .l--grid-row
             +column({span: 2, borders: {
                 right: 'heavy'
             }})
                 +card(locals.articles[0], {
-                    size: 'l',
+                    size: 'xl',
                     borders: {
+                        top: 'heavy',
                         bottom: 'light'
                     },
                     bullets: false,
@@ -113,13 +127,15 @@ block content
                 })
                 .l--grid
                     .l--grid-row
-                        +column()
+                        +column({
+                            borders: {
+                                right: 'light'
+                            }
+                        })
                             +card(locals.articles[1], {
                                 media: false,
                                 actions: false,
-                                borders: {
-                                    right: 'light'
-                                }
+                                borders: false
                             })
                         +column()
                             +card(locals.articles[2], {
@@ -129,20 +145,50 @@ block content
                             })
             +column()
                 +card(locals.articles[3], {
-                    actions: false
+                    size: 'l',
+                    borders: {
+                        top: 'heavy',
+                        bottom: 'light'
+                    },
+                    bullets: false
+                })
+                +card(locals.articles[4], {
+                    actions: false,
+                    size: 's',
+                    media: false,
+                    bullets: false,
+                    byline: false,
+                    timestamp: false,
+                    summary: false
+                })
+                +card(locals.articles[5], {
+                    actions: false,
+                    size: 's',
+                    media: false,
+                    bullets: false,
+                    byline: false,
+                    timestamp: false,
+                    summary: false,
+                    borders: {
+                        bottom: 'heavy'
+                    }
                 })
     .l--grid.l--margin-top-xl
         .l--grid-row
             +strap('Business')
         .l--grid-row
-            +column({span: 2})
+            +column({
+                span: 2,
+                borders: {
+                    right: 'light'
+                }
+            })
                 +card(business[0], {
                     size: 'xl'
                 })
-            +column()
+            +column({justified: true})
                 +card(business[1], {
                     actions: false,
-                    media: false,
                     byline: false,
                     size: 'l'
                 })
@@ -181,14 +227,11 @@ block content
             +column()
                 +card(life[0], {
                     colorTheme: 'inverted',
-                    ornament: 'ahed',
-                    alignment: 'center',
                     mediaRatio: 1.15,
                     mediaPlacement: 'behind',
                     size: 'l',
                     byline: false,
                     timestamp: false,
-                    actions: false
                 })
                 .l--grid
                     .l--grid-row
@@ -197,7 +240,6 @@ block content
                                 colorTheme: 'inverted',
                                 mediaPlacement: 'behind',
                                 mediaRatio: 0.66,
-                                actions: false,
                                 summary: false
                             })
                         +column()
@@ -205,7 +247,6 @@ block content
                                 colorTheme: 'inverted',
                                 mediaPlacement: 'behind',
                                 mediaRatio: 0.66,
-                                actions: false,
                                 summary: false
                             })
             +column()
@@ -214,10 +255,8 @@ block content
                     mediaPlacement: 'behind',
                     size: 'xl',
                     mediaRatio: 1,
-                    ornament: 'leder',
                     alignment: 'center',
                     headlinePosition: 'bottom',
-                    actions: false
                 })
                 +card(life[4], {
                     colorTheme: 'inverted',
@@ -226,7 +265,6 @@ block content
                     mediaRatio: 1.66,
                     byline: false,
                     timestamp: false,
-                    actions: false
                 })
     .l--grid.l--padding-top-xl
         .l--grid-row
@@ -234,7 +272,10 @@ block content
                 +card(locals.articles[1], {
                     size: 'l',
                     mediaType: 'video',
-                    actions: false
+                    colorTheme: 'inverted',
+                    mediaPlacement: 'behind',
+                    borders: false,
+                    byline: false
                 })
             +column()
                 +card(locals.articles[10], {
@@ -242,38 +283,47 @@ block content
                     actions: false
                 })
     .c--bg-jet
-        .l--grid.l--margin-top-xl.l--padding-top-xl
+        .l--grid.l--margin-top-xl.l--padding-top-xl.l--padding-bottom-xl
             .l--grid-row
                 +column({
                     span: 2,
                     colorTheme: 'inverted'
                     })
-                    +card(life[0], {
+                    +card(life[1], {
+                        size: 'l',
+                        byline: false,
+                        timestamp: false,
                         colorTheme: 'inverted',
                         mediaPlacement: 'behind',
                         borders: false,
-                        mediaType: 'video'
+                        mediaType: 'video',
                     })
                 +column({colorTheme: 'inverted'})
-                    +card(locals.articles[10], {
+                    +card(life[2], {
                         colorTheme: 'inverted',
                         actions: false,
                         orientation: 'horizontal',
                         mediaType: 'video',
                         summary: false,
-                        byline: false
+                        byline: false,
+                        borders: false
                     })
-                    +card(locals.articles[11], {
+                    +card(life[3], {
                         colorTheme: 'inverted',
                         actions: false,
                         orientation: 'horizontal',
+                        mediaType: 'video',
                         summary: false,
-                        byline: false
+                        byline: false,
+                        bullets: false,
+                        borders: false
                     })
-                    +card(locals.articles[12], {
+                    +card(life[4], {
                         colorTheme: 'inverted',
                         actions: false,
                         orientation: 'horizontal',
+                        mediaType: 'video',
                         summary: false,
-                        byline: false
+                        byline: false,
+                        borders: false
                     })
