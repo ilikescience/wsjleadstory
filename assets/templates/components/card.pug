@@ -12,7 +12,7 @@ mixin card(inputData, params)
             columns: 1,
             rows: 1,
             orientation: 'vertical',
-            mediaPlacement: 'first',
+            mediaPosition: 'first',
             mediaRatio: 1.5,
             actions: true,
             commentCount: Math.floor(Math.random() * 100),
@@ -39,15 +39,15 @@ mixin card(inputData, params)
             card--theme-${data.colorTheme}
             card--${data.size}
             card--${data.orientation}
-            card--placement-${data.mediaPlacement}
+            card--placement-${data.mediaPosition}
             card--${data.actions ? 'has-actions' : 'no-actions'}
             l--grid-col-span-${data.columns}
             l--grid-row-span-${data.rows}
             ${borderClass}
             ${data.alignment === 'center' ? 'card--text-center' : 'card--text-left' }
-            ${data.mediaPlacement === 'behind' ? 'card--inset' : '' }`
+            ${data.mediaPosition === 'behind' ? 'card--inset' : '' }`
          style=`
-                ${data.mediaPlacement === 'behind' ? `
+                ${data.mediaPosition === 'behind' ? `
                     background-image:url(${data.media});
                     padding-top: calc((1 / ${data.mediaRatio}) * 100%)` 
                     : ``
@@ -56,7 +56,7 @@ mixin card(inputData, params)
     )
         .card--content
             .card--text(class=`
-                ${data.mediaPlacement === 'behind' ? 'card--text-inset' : ''}
+                ${data.mediaPosition === 'behind' ? 'card--text-inset' : ''}
                 card--text-${data.headlinePosition}`
             )
                 +headline(data)
@@ -91,7 +91,7 @@ mixin card(inputData, params)
                                     bottom: index === (data.bullets.length - 1) ? false : 'light'
                                 }
                             })
-                if data.media && ['left', 'right', 'middle'].includes(data.mediaPlacement)
+                if data.media && ['left', 'right', 'middle'].includes(data.mediaPosition)
                     +media(data)
                 if data.actions
                     .card--footer
@@ -100,6 +100,6 @@ mixin card(inputData, params)
                         +cardAction()
                         +cardAction({icon: 'share'})
                         +cardAction({icon: 'comments', label: data.commentCount})
-            if data.media && ['first', 'last', 'behind'].includes(data.mediaPlacement)
+            if data.media && ['first', 'last', 'behind'].includes(data.mediaPosition)
                 +media(data)
 

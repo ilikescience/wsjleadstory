@@ -1,8 +1,8 @@
 include icon
 
 mixin media(data, params)
-    .card--media(class=`card--media-${data.mediaType} card--media-placement-${data.mediaPlacement}`)
+    .card--media(class=`card--media-${data.mediaType} card--media-placement-${data.mediaPosition}`)
         if (data.mediaType === 'video')
             .card--media-icon
                 +icon('play')
-        img(src=data.media class=`${data.mediaPlacement === 'behind' ? 'l--visuallyhidden' : ''}`)
+        img(src=data.media class=`${data.mediaPosition === 'behind' ? 'l--visuallyhidden' : ''}`)

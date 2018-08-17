@@ -14,52 +14,56 @@ block content
         .l--grid-row
             +column({
                 span: 3,
-                justified: true,
                 borders: {
                     right: 'light'
                 }
             })
                 +card(locals.articles[0], {
-                    size: 'l',
+                    size: 'xl',
+                    media: false,
+                })
+                +card(locals.articles[1], {
                     media: false,
                     borders: {
                         bottom: 'heavy'
                     }
-                })
-                +card(locals.articles[1], {
-                    media: false,
                 })
                 +card(locals.articles[2], {
                     media: false
                 })
                 +card(locals.articles[3], {
                     media: false,
-                    borders: false,
+                    borders: false
                 })
             
-            +column({span: 4})
+            +column({span: 5})
                 +card(locals.articles[4], {
-                    size: 'xl',
-                    bullets: false
+                    size: 'l'
                 })
                 +card(locals.articles[5], {
-                    media: false,
-                    bullets: false
+                    size: 'l',
+                    media: false
                 })
                 +card(locals.articles[6], {
-                    orientation: 'horizontal',
-                    mediaPlacement: 'left',
+                    media: false,
                     borders: false,
                 })
 
             +column({
                 span: 2,
-                justified: true,
                 borders: {
                     left: 'light'
                 }
             })
                 +card(locals.articles[7], {
+                    summary: false,
+                    byline: false,
+                    timestamp: false,
+                    borders: false,
+                    bullets: false,
+                    actions: false
+                })
+                +card(locals.articles[8], {
                     summary: false,
                     byline: false,
                     timestamp: false,
@@ -73,32 +77,21 @@ block content
                     timestamp: false,
                     borders: false,
                     bullets: false,
-                    actions: false,
-                    borders: {
-                        bottom: 'heavy'
-                    }
-                })
-                +card(locals.articles[8], {
-                    size: 's',
-                    media: false,
-                    byline: false,
-                    timestamp: false,
-                    bullets: false,
                     actions: false
                 })
                 +card(locals.articles[10], {
-                    size: 's',
-                    media: false,
+                    summary: false,
                     byline: false,
                     timestamp: false,
+                    borders: false,
                     bullets: false,
                     actions: false
                 })
-                +card(locals.articles[18], {
-                    size: 's',
-                    media: false,
+                +card(locals.articles[14], {
+                    summary: false,
                     byline: false,
                     timestamp: false,
+                    borders: false,
                     bullets: false,
                     actions: false
                 })
@@ -123,7 +116,8 @@ block content
                         bottom: 'light'
                     },
                     bullets: false,
-                    actions: false
+                    actions: false,
+                    media: false
                 })
                 .l--grid
                     .l--grid-row
@@ -211,7 +205,8 @@ block content
                     alignment: 'center',
                     size: 'l',
                     ornament: 'ahed',
-                    mediaPlacement: 'last',
+                    mediaPosition: 'last',
+                    flashline: false,
                     media: 'https://cl.ly/02452G19400z/Screen%20Shot%202018-08-13%20at%2012.02.15%20PM.png'
                 })
             +column({span: 4})
@@ -225,42 +220,45 @@ block content
             +strap('Overlays')
         .l--grid-row
             +column()
-                +card(life[0], {
+                +card(locals.articles[12], {
                     colorTheme: 'inverted',
                     mediaRatio: 1.15,
-                    mediaPlacement: 'behind',
+                    mediaPosition: 'behind',
                     size: 'l',
                     byline: false,
                     timestamp: false,
+                    bullets: false
                 })
                 .l--grid
                     .l--grid-row
                         +column()
                             +card(life[1], {
                                 colorTheme: 'inverted',
-                                mediaPlacement: 'behind',
+                                mediaPosition: 'behind',
                                 mediaRatio: 0.66,
-                                summary: false
+                                summary: false,
+                                bullets: false
                             })
                         +column()
                             +card(life[2], {
                                 colorTheme: 'inverted',
-                                mediaPlacement: 'behind',
+                                mediaPosition: 'behind',
                                 mediaRatio: 0.66,
                                 summary: false
                             })
             +column()
                 +card(life[3], {
                     colorTheme: 'inverted',
-                    mediaPlacement: 'behind',
+                    mediaPosition: 'behind',
                     size: 'xl',
                     mediaRatio: 1,
                     alignment: 'center',
                     headlinePosition: 'bottom',
+                    bullets: false,
                 })
                 +card(life[4], {
                     colorTheme: 'inverted',
-                    mediaPlacement: 'behind',
+                    mediaPosition: 'behind',
                     size: 'l',
                     mediaRatio: 1.66,
                     byline: false,
@@ -273,9 +271,10 @@ block content
                     size: 'l',
                     mediaType: 'video',
                     colorTheme: 'inverted',
-                    mediaPlacement: 'behind',
+                    mediaPosition: 'behind',
                     borders: false,
-                    byline: false
+                    byline: false,
+                    bullets: false
                 })
             +column()
                 +card(locals.articles[10], {
@@ -294,9 +293,10 @@ block content
                         byline: false,
                         timestamp: false,
                         colorTheme: 'inverted',
-                        mediaPlacement: 'behind',
+                        mediaPosition: 'behind',
                         borders: false,
                         mediaType: 'video',
+                        bullets: false
                     })
                 +column({colorTheme: 'inverted'})
                     +card(life[2], {

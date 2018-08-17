@@ -11,8 +11,8 @@
     --gradient-mid: rgba(255, 255, 255, 0.35);
     --gradient-end: rgba(255, 255, 255, 0);
     --text-shadow: none;
-    --border-color-light: rgba(0, 0, 0, 0.1);
-    --border-color-heavy: rgba(0, 0, 0, 0.5);
+    --border-color-light: rgba(0, 0, 0, 0.05);
+    --border-color-heavy: rgba(0, 0, 0, 0.1);
 }
 
 .card--theme-inverted {
@@ -28,8 +28,8 @@
     --gradient-mid: rgba(0, 0, 0, 0.35);
     --gradient-end: rgba(0, 0, 0, 0);
     --text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
-    --border-color-light: rgba(255, 255, 255, 0.1);
-    --border-color-heavy: rgba(255, 255, 255, 0.5);
+    --border-color-light: rgba(255, 255, 255, 0.05);
+    --border-color-heavy: rgba(255, 255, 255, 0.1);
 }
 
 .card,
@@ -117,17 +117,17 @@
     padding: 0;
 
     &:not(:first-child) {
-        padding-top: var(--l--space-s);
-        margin-top: var(--l--space-m);
+        padding-top: 0;
+        margin-top: var(--l--space-s);
     }
 
     &:not(:last-child) {
-        padding-bottom: var(--l--space-s);
-        margin-bottom: var(--l--space-s);
+        padding-bottom: 0;
+        margin-bottom: 0;
     }
 
     &.l--border-top-heavy {
-        padding-top: var(--l--space-m);
+        padding-top: var(--l--space-s);
 
         &:not(:first-child) {
             margin-top: var(--l--space-l);
@@ -135,15 +135,15 @@
     }
 
     &.l--border-top-light {
-        padding-top: var(--l--space-m);
+        padding-top: var(--l--space-s);
 
         &:not(:first-child) {
-            margin-top: var(--l--space-m);
+            margin-top: var(--l--space-s);
         }
     }
 
     &.l--border-bottom-heavy {
-        padding-bottom: var(--l--space-l);
+        padding-bottom: var(--l--space-m);
 
         &:not(:last-child) {
             margin-bottom: var(--l--space-l);
@@ -151,10 +151,10 @@
     }
 
     &.l--border-bottom-light {
-        padding-bottom: var(--l--space-m);
+        padding-bottom: var(--l--space-s);
 
         &:not(:last-child) {
-            margin-bottom: var(--l--space-m);
+            margin-bottom: var(--l--space-s);
         }
     }
 }
