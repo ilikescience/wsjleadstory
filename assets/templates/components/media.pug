@@ -1,8 +1,19 @@
 include icon
 
-mixin media(data, params)
-    .card--media(class=`card--media-${data.mediaType} card--media-placement-${data.mediaPosition}`)
-        if (data.mediaType === 'video')
+mixin media(mediaObject, params)
+    -
+        var media = deepmerge.all([
+            {
+                url: 'http://placehold.it/300/400',
+                aspectRatio: 1.5,
+                caption: '',
+                credit: '',
+                type: 'image',
+                position: 'first'
+            }
+        , mediaObject, params || ''])
+    .card--media(class=`card--media-${media.type} card--media-placement-${media.position}`)
+        if (media.type === 'video')
             .card--media-icon
                 +icon('play')
-        img(src=data.media class=`${data.mediaPosition === 'behind' ? 'l--visuallyhidden' : ''}`)
+        img(src=media.url class=`${media.position === 'behind' ? 'l--visuallyhidden' : ''}`)

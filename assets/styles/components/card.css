@@ -70,8 +70,8 @@
         flex: 0 1 35%;
     }
 
-    &.card--placement-left,
-    &.card--placement-right {
+    &.card--position-left,
+    &.card--position-right {
         & .card--text {
             flex-direction: row;
             flex-wrap: wrap;
@@ -91,21 +91,21 @@
         }
     }
 
-    &.card--placement-first,
-    &.card--placement-last {
+    &.card--position-first,
+    &.card--position-last {
         & .card--text {
             flex: 0 1 calc(65% - var(--l--space-l));
         }
     }
 
-    &.card--placement-first {
+    &.card--position-first {
         & .card--media {
             align-self: flex-start;
             margin-right: var(--l--space-l);
         }
     }
 
-    &.card--placement-last {
+    &.card--position-last {
         & .card--media {
             margin-left: var(--l--space-l);
         }
@@ -311,6 +311,7 @@
 }
 
 .card--ahed-asterisk {
+    order: 3;
 
     & .icon {
         display: inline-block;

@@ -14,24 +14,33 @@ fetch(url)
                 item.articles.forEach((article) => {
                     const thisArticle = { 
                         id: article.articleId,
-                        title: article.headline,
+                        headline: {
+                            text: article.headline,
+                            style: article.articleSection
+                        },
                         summary: article.summary,
-                        media: false,
+                        media: {},
                         byline: article.byline,
                         flashline: article.hasOwnProperty('flashline') && article.flashline ? article.flashline.flashline : '',
                         category: article.articleSection,
                         storyType: article.articleSection,
                         avatar: false,
                         timestamp: article.timestamp,
-                        bullets: []
+                        bullets: [],
+                        commentCount: article.commentCount
                     }
                     if (article.hasOwnProperty('arthurV2Image')) {
-                        thisArticle.media = article.arthurV2Image.location;
+                        thisArticle.media.url = article.arthurV2Image.location;
                     } else if (article.hasOwnProperty('image') && 
                         article.image && 
                         article.image.widths &&
                         article.image.widths['620']) {
-                        thisArticle.media = article.image.widths['620'].url;
+                        thisArticle.media.url = article.image.widths['620'].url;
+                        if (article.image.hasOwnProperty('caption'))
+                            thisArticle.media.caption = article.image.caption;
+                        if (article.image.hasOwnProperty('credit'))
+                            thisArticle.media.credit = article.image.credit;
+                        
                     }
                     if (article.hasOwnProperty('authors') && article.authors[0].hasOwnProperty('hedcutImage')) {
                         thisArticle.avatar = article.authors[0].hedcutImage;
@@ -41,14 +50,12 @@ fetch(url)
                         article.articleSection === 'Homes' ||
                         article.articleSection === 'Real Estate' ||
                         article.articleSection === 'Slideshow' ) {
-                        thisArticle.storyType = 'Life';
-                    } else if(article.articleSection === 'Decos and Corrections' ||
-                        article.articleSection === 'Opinion' ||
-                        article.articleSection === '') {
+                        thisArticle.headline.style = 'Life';
+                    } else if(article.articleSection === 'Opinion') {
                         // skip these
                     }
                     else {
-                        thisArticle.storyType = 'News'
+                        thisArticle.headline.style = 'News'
                     }
 
                     if (article.hasOwnProperty('bullets')) {

@@ -3,63 +3,66 @@ include cardAction
 include headline
 include media
 
-mixin card(inputData, params)
+mixin card(inputData, cardConfiguration)
     -
-        var data = Object.assign({
+        var data = deepmerge.all([{
             colorTheme: 'standard',
             alignment: 'left',
-            size: 'm',
-            columns: 1,
-            rows: 1,
             orientation: 'vertical',
-            mediaPosition: 'first',
-            mediaRatio: 1.5,
             actions: true,
-            commentCount: Math.floor(Math.random() * 100),
-            storyType : 'News',
             trending : false,
-            ornament: false,
-            media: false,
-            mediaType: 'image',
-            headlinePosition: 'bottom',
+            media: {
+                position: 'first',
+                aspectRatio: 1.5
+            },
+            headline: {
+                size: 'm',
+                position: 'bottom',
+                ornament: false,
+                style: 'News'
+            },
             borders: { bottom: 'light' },
             bullets: false
-            }, inputData, params)
+            }, 
+            inputData || {},
+            cardConfiguration || {}
+        ])
         var now = new Date().getTime();
         var timestamp = '';
         if (now - data.timestamp < 3600000) {
             timestamp = `${Math.round((now - data.timestamp) / 60000)} mins ago`;
         }
         var borderClass = '';
-        for (const border in data.borders) {
+        for (var border in data.borders) {
             borderClass += `l--border-${border}-${data.borders[border]} `
         }
+        var isInset = data.media.position === 'behind';
     .card(
         class=`
             card--theme-${data.colorTheme}
             card--${data.size}
             card--${data.orientation}
-            card--placement-${data.mediaPosition}
+            card--position-${data.media.position}
             card--${data.actions ? 'has-actions' : 'no-actions'}
-            l--grid-col-span-${data.columns}
-            l--grid-row-span-${data.rows}
             ${borderClass}
             ${data.alignment === 'center' ? 'card--text-center' : 'card--text-left' }
-            ${data.mediaPosition === 'behind' ? 'card--inset' : '' }`
+            ${isInset ? 'card--inset' : '' }`
          style=`
-                ${data.mediaPosition === 'behind' ? `
-                    background-image:url(${data.media});
-                    padding-top: calc((1 / ${data.mediaRatio}) * 100%)` 
+                ${isInset ? `
+                    background-image:url(${data.media.url});
+                    padding-top: calc((1 / ${data.media.aspectRatio}) * 100%)` 
                     : ``
                 }`
         data-sbid=data.id
     )
         .card--content
             .card--text(class=`
-                ${data.mediaPosition === 'behind' ? 'card--text-inset' : ''}
-                card--text-${data.headlinePosition}`
+                ${isInset ? 'card--text-inset' : ''}
+                card--text-${data.headline.position}`
             )
-                +headline(data)
+                if data.flashline
+                    +flashline(data.flashline)
+                +headline(data.headline)
                 if data.summary
                     .card--summary.t--family-serif.t--size-s.l--margin-bottom-s #{data.summary}
                 if data.byline || timestamp
@@ -78,9 +81,11 @@ mixin card(inputData, params)
                     ul.card--bullets
                         each item, index in data.bullets
                             +card({
-                                title: item.title,
                                 actions: false,
-                                size: 's',
+                                headline: {
+                                    text: item.title,
+                                    size: 's',
+                                },
                                 media: false,
                                 bullets: false,
                                 byline: false,
@@ -91,8 +96,9 @@ mixin card(inputData, params)
                                     bottom: index === (data.bullets.length - 1) ? false : 'light'
                                 }
                             })
-                if data.media && ['left', 'right', 'middle'].includes(data.mediaPosition)
-                    +media(data)
+                if data.media && ['left', 'right', 'middle'].includes(data.media.position)
+                    - console.log(data.media)
+                    +media(data.media)
                 if data.actions
                     .card--footer
                         if timestamp 
@@ -100,6 +106,6 @@ mixin card(inputData, params)
                         +cardAction()
                         +cardAction({icon: 'share'})
                         +cardAction({icon: 'comments', label: data.commentCount})
-            if data.media && ['first', 'last', 'behind'].includes(data.mediaPosition)
-                +media(data)
+            if data.media && ['first', 'last', 'behind'].includes(data.media.position)
+                +media(data.media)
 

@@ -19,7 +19,9 @@ block content
                 }
             })
                 +card(locals.articles[0], {
-                    size: 'xl',
+                    headline: {
+                        size: 'xl',
+                    },
                     media: false,
                 })
                 +card(locals.articles[1], {
@@ -38,10 +40,14 @@ block content
             
             +column({span: 5})
                 +card(locals.articles[4], {
-                    size: 'l'
+                    headline: {
+                        size: 'l',
+                    }
                 })
                 +card(locals.articles[5], {
-                    size: 'l',
+                    headline: {
+                        size: 'l',
+                    },
                     media: false
                 })
                 +card(locals.articles[6], {
@@ -102,7 +108,9 @@ block content
             +column()
                 +card(locals.articles[6], {
                     orientation: 'horizontal',
-                    size: 'l',
+                    headline: {
+                        size: 'l',
+                    },
                     borders: false
                 })
         .l--grid-row
@@ -110,14 +118,15 @@ block content
                 right: 'heavy'
             }})
                 +card(locals.articles[0], {
-                    size: 'xl',
+                    headline: {
+                        size: 'xl',
+                    },
                     borders: {
                         top: 'heavy',
                         bottom: 'light'
                     },
                     bullets: false,
                     actions: false,
-                    media: false
                 })
                 .l--grid
                     .l--grid-row
@@ -139,7 +148,9 @@ block content
                             })
             +column()
                 +card(locals.articles[3], {
-                    size: 'l',
+                    headline: {
+                        size: 'l',
+                    },
                     borders: {
                         top: 'heavy',
                         bottom: 'light'
@@ -178,13 +189,17 @@ block content
                 }
             })
                 +card(business[0], {
-                    size: 'xl'
+                    headline: {
+                        size: 'xl',
+                    }
                 })
             +column({justified: true})
                 +card(business[1], {
                     actions: false,
                     byline: false,
-                    size: 'l'
+                    headline: {
+                        size: 'l',
+                    }
                 })
                 +card(business[2], {
                     actions: false,
@@ -203,17 +218,23 @@ block content
             +column({span: 3})
                 +card(ahed[0], {
                     alignment: 'center',
-                    size: 'l',
-                    ornament: 'ahed',
-                    mediaPosition: 'last',
+                    headline: {
+                        size: 'l',
+                        ornament: 'ahed',
+                    },
                     flashline: false,
-                    media: 'https://cl.ly/02452G19400z/Screen%20Shot%202018-08-13%20at%2012.02.15%20PM.png'
+                    media: {
+                        url: 'https://cl.ly/02452G19400z/Screen%20Shot%202018-08-13%20at%2012.02.15%20PM.png',
+                        position: 'last'
+                        }
                 })
             +column({span: 4})
                 +card(life[1], {
-                    size: 'xl',
+                    headline: {
+                        size: 'xl',
+                        ornament: 'leder'
+                    },
                     alignment: 'center',
-                    ornament: 'leder'
                 })
     .l--grid.l--margin-top-xl
         .l--grid-row
@@ -222,9 +243,13 @@ block content
             +column()
                 +card(locals.articles[12], {
                     colorTheme: 'inverted',
-                    mediaRatio: 1.15,
-                    mediaPosition: 'behind',
-                    size: 'l',
+                    media: {
+                        position:'behind',
+                        aspectRatio: 1.15
+                    },
+                    headline: {
+                        size: 'l',
+                    },
                     byline: false,
                     timestamp: false,
                     bullets: false
@@ -234,33 +259,45 @@ block content
                         +column()
                             +card(life[1], {
                                 colorTheme: 'inverted',
-                                mediaPosition: 'behind',
-                                mediaRatio: 0.66,
+                                media: {
+                                    position: 'behind',
+                                    aspectRatio: 0.66
+                                },
                                 summary: false,
                                 bullets: false
                             })
                         +column()
                             +card(life[2], {
                                 colorTheme: 'inverted',
-                                mediaPosition: 'behind',
-                                mediaRatio: 0.66,
-                                summary: false
+                                media: {
+                                    position: 'behind',
+                                    aspectRatio: 0.66
+                                },
+                                summary: false,
+                                bullets: false
                             })
             +column()
                 +card(life[3], {
                     colorTheme: 'inverted',
-                    mediaPosition: 'behind',
-                    size: 'xl',
-                    mediaRatio: 1,
+                    media: {
+                        position: 'behind',
+                        aspectRatio: 1
+                    },
+                    headline: {
+                        size: 'xl',
+                    },
                     alignment: 'center',
-                    headlinePosition: 'bottom',
                     bullets: false,
                 })
                 +card(life[4], {
                     colorTheme: 'inverted',
-                    mediaPosition: 'behind',
-                    size: 'l',
-                    mediaRatio: 1.66,
+                    headline: {
+                        size: 'l',
+                    },
+                    media: {
+                        position: 'behind',
+                        aspectRatio: 1.66
+                    },
                     byline: false,
                     timestamp: false,
                 })
@@ -268,17 +305,23 @@ block content
         .l--grid-row
             +column({span: 3})
                 +card(locals.articles[1], {
-                    size: 'l',
-                    mediaType: 'video',
+                    headline: {
+                        size: 'l',
+                    },
+                    media: {
+                        type: 'video',
+                        position: 'behind'
+                    },
                     colorTheme: 'inverted',
-                    mediaPosition: 'behind',
                     borders: false,
                     byline: false,
                     bullets: false
                 })
             +column()
                 +card(locals.articles[10], {
-                    mediaType: 'video',
+                    media: {
+                        type: 'video'
+                    },
                     actions: false
                 })
     .c--bg-jet
@@ -289,13 +332,17 @@ block content
                     colorTheme: 'inverted'
                     })
                     +card(life[1], {
-                        size: 'l',
+                        headline: {
+                            size: 'l',
+                        },
                         byline: false,
                         timestamp: false,
                         colorTheme: 'inverted',
-                        mediaPosition: 'behind',
                         borders: false,
-                        mediaType: 'video',
+                        media: {
+                            type: 'video',
+                            position: 'behind'
+                        },
                         bullets: false
                     })
                 +column({colorTheme: 'inverted'})
@@ -303,27 +350,36 @@ block content
                         colorTheme: 'inverted',
                         actions: false,
                         orientation: 'horizontal',
-                        mediaType: 'video',
+                        media: {
+                            type: 'video'
+                        },
                         summary: false,
                         byline: false,
-                        borders: false
+                        borders: false,
+                        bullets: false
                     })
                     +card(life[3], {
                         colorTheme: 'inverted',
                         actions: false,
                         orientation: 'horizontal',
-                        mediaType: 'video',
+                        media: {
+                            type: 'video'
+                        },
                         summary: false,
                         byline: false,
                         bullets: false,
-                        borders: false
+                        borders: false,
+                        bullets: false
                     })
                     +card(life[4], {
                         colorTheme: 'inverted',
                         actions: false,
                         orientation: 'horizontal',
-                        mediaType: 'video',
+                        media: {
+                            type: 'video',
+                        },
                         summary: false,
                         byline: false,
-                        borders: false
+                        borders: false,
+                        bullets: false
                     })

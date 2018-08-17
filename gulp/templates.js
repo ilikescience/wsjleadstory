@@ -28,7 +28,10 @@ module.exports = function(gulp, plugins) {
                     fs.readFileSync('./data.json')
                     );
                 } ))
-                .pipe(plugins.pug({'basedir': path.join(gulp.inputPath, 'templates')}))
+                .pipe(plugins.pug({
+                    'basedir': path.join(gulp.inputPath, 'templates'),
+                    locals : {deepmerge : require('deepmerge')}
+                }))
                 .on('error', plugins.notify.onError(function(err) {
                     return err.message + ' in ' + err.fileName + ' at line ' + err.lineNumber;
                 }))
