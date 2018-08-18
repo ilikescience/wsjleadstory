@@ -7,10 +7,11 @@ mixin card(inputData, cardConfiguration)
     -
         var data = deepmerge.all([{
             colorTheme: 'standard',
-            alignment: 'left',
+            textAlignment: 'left',
             orientation: 'vertical',
             actions: true,
             trending : false,
+            byline: false,
             media: {
                 position: 'first',
                 aspectRatio: 1.5
@@ -21,8 +22,10 @@ mixin card(inputData, cardConfiguration)
                 ornament: false,
                 style: 'News'
             },
+            commentCount: 0,
             borders: { bottom: 'light' },
-            bullets: false
+            bullets: false,
+            timestamp: false
             }, 
             inputData || {},
             cardConfiguration || {}
@@ -45,7 +48,7 @@ mixin card(inputData, cardConfiguration)
             card--position-${data.media.position}
             card--${data.actions ? 'has-actions' : 'no-actions'}
             ${borderClass}
-            ${data.alignment === 'center' ? 'card--text-center' : 'card--text-left' }
+            card--text-${data.textAlignment}
             ${isInset ? 'card--inset' : '' }`
          style=`
                 ${isInset ? `
@@ -97,7 +100,6 @@ mixin card(inputData, cardConfiguration)
                                 }
                             })
                 if data.media && ['left', 'right', 'middle'].includes(data.media.position)
-                    - console.log(data.media)
                     +media(data.media)
                 if data.actions
                     .card--footer

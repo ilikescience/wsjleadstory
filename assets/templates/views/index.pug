@@ -16,6 +16,13 @@ block content
                 span: 3,
                 borders: {
                     right: 'light'
+                },
+                repeat: {
+                    data: locals.articles.slice(1,4),
+                    cardConfig: {
+                        media: false,
+                        byline: false
+                    }
                 }
             })
                 +card(locals.articles[0], {
@@ -23,84 +30,47 @@ block content
                         size: 'xl',
                     },
                     media: false,
-                })
-                +card(locals.articles[1], {
-                    media: false,
-                    borders: {
-                        bottom: 'heavy'
-                    }
-                })
-                +card(locals.articles[2], {
-                    media: false
-                })
-                +card(locals.articles[3], {
-                    media: false,
-                    borders: false
+                    byline: false
                 })
             
             +column({span: 5})
                 +card(locals.articles[4], {
                     headline: {
                         size: 'l',
-                    }
+                    },
+                    byline: false
                 })
                 +card(locals.articles[5], {
                     headline: {
                         size: 'l',
                     },
-                    media: false
+                    media: false,
+                    byline: false
                 })
                 +card(locals.articles[6], {
                     media: false,
                     borders: false,
+                    byline: false
                 })
 
             +column({
                 span: 2,
                 borders: {
                     left: 'light'
+                },
+                 repeat: {
+                    data: locals.articles.slice(7,12),
+                    cardConfig: {
+                        summary: false,
+                        byline: false,
+                        timestamp: false,
+                        borders: false,
+                        bullets: false,
+                        actions: false
+                    }
                 }
             })
-                +card(locals.articles[7], {
-                    summary: false,
-                    byline: false,
-                    timestamp: false,
-                    borders: false,
-                    bullets: false,
-                    actions: false
-                })
-                +card(locals.articles[8], {
-                    summary: false,
-                    byline: false,
-                    timestamp: false,
-                    borders: false,
-                    bullets: false,
-                    actions: false
-                })
-                +card(locals.articles[9], {
-                    summary: false,
-                    byline: false,
-                    timestamp: false,
-                    borders: false,
-                    bullets: false,
-                    actions: false
-                })
-                +card(locals.articles[10], {
-                    summary: false,
-                    byline: false,
-                    timestamp: false,
-                    borders: false,
-                    bullets: false,
-                    actions: false
-                })
-                +card(locals.articles[14], {
-                    summary: false,
-                    byline: false,
-                    timestamp: false,
-                    borders: false,
-                    bullets: false,
-                    actions: false
-                })
+
     .l--grid.l--margin-top-xl
         .l--grid-row
             +strap('Package')
@@ -159,7 +129,9 @@ block content
                 })
                 +card(locals.articles[4], {
                     actions: false,
-                    size: 's',
+                    headline: {
+                        size: 's'
+                    },
                     media: false,
                     bullets: false,
                     byline: false,
@@ -168,7 +140,9 @@ block content
                 })
                 +card(locals.articles[5], {
                     actions: false,
-                    size: 's',
+                    headline: {
+                        size: 's'
+                    },
                     media: false,
                     bullets: false,
                     byline: false,
@@ -217,7 +191,7 @@ block content
         .l--grid-row
             +column({span: 3})
                 +card(ahed[0], {
-                    alignment: 'center',
+                    textAlignment: 'center',
                     headline: {
                         size: 'l',
                         ornament: 'ahed',
@@ -234,7 +208,7 @@ block content
                         size: 'xl',
                         ornament: 'leder'
                     },
-                    alignment: 'center',
+                    textAlignment: 'center',
                 })
     .l--grid.l--margin-top-xl
         .l--grid-row
@@ -286,7 +260,7 @@ block content
                     headline: {
                         size: 'xl',
                     },
-                    alignment: 'center',
+                    textAlignment: 'center',
                     bullets: false,
                 })
                 +card(life[4], {
@@ -345,41 +319,21 @@ block content
                         },
                         bullets: false
                     })
-                +column({colorTheme: 'inverted'})
-                    +card(life[2], {
-                        colorTheme: 'inverted',
-                        actions: false,
-                        orientation: 'horizontal',
-                        media: {
-                            type: 'video'
-                        },
-                        summary: false,
-                        byline: false,
-                        borders: false,
-                        bullets: false
-                    })
-                    +card(life[3], {
-                        colorTheme: 'inverted',
-                        actions: false,
-                        orientation: 'horizontal',
-                        media: {
-                            type: 'video'
-                        },
-                        summary: false,
-                        byline: false,
-                        bullets: false,
-                        borders: false,
-                        bullets: false
-                    })
-                    +card(life[4], {
-                        colorTheme: 'inverted',
-                        actions: false,
-                        orientation: 'horizontal',
-                        media: {
-                            type: 'video',
-                        },
-                        summary: false,
-                        byline: false,
-                        borders: false,
-                        bullets: false
-                    })
+                +column({
+                    colorTheme: 'inverted',
+                    repeat: {
+                        data: life.slice(2,7),
+                        cardConfig: {
+                            colorTheme: 'inverted',
+                            actions: false,
+                            orientation: 'horizontal',
+                            media: {
+                                type: 'video',
+                            },
+                            summary: false,
+                            byline: false,
+                            borders: false,
+                            bullets: false
+                        }
+                    }
+                })

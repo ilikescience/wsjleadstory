@@ -1,10 +1,13 @@
+include card
+
 mixin column(inputData, props)
     -
-        var data = Object.assign({
+        var data = deepmerge.all([{
             span: 1,
             colorTheme: 'standard',
-            borders: {}
-            }, inputData, params);
+            borders: {},
+            repeat: false
+            }, inputData || {}, params || {}]);
         var borderClass = '';
         for (const border in data.borders) {
             borderClass += `l--border-${border}-${data.borders[border]} `
@@ -16,3 +19,9 @@ mixin column(inputData, props)
         ${data.justified ? 'l--grid-col-justify' : ''}
     `)
         block
+        if data.repeat
+            - var i = 0;
+            while i < data.repeat.data.length
+                +card(data.repeat.data[i], data.repeat.cardConfig)
+                - i++
+        
