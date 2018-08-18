@@ -94,6 +94,7 @@ Both `data` and `cardConfiguration` are objects that accept the following proper
 	orientation: 'vertical',
 	timestamp: 1534630244000,
 	trending: false
+}
 ```
 
 ## Borders
