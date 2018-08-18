@@ -54,8 +54,7 @@ Both `data` and `cardConfiguration` are objects that accept the following proper
 | colorTheme | string | Sets a class that refers to color theme CSS. | `’standard’` `’inverted`’ | `’standard’` |
 | commentCount | integer | Sets the comment count to be displayed in the card’s actions. If `0`, no comment count is displayed. | - | 0 |
 | flashline | string | Sets the text that appears in the card’s flashline. | - | `false` |
-| headline | [headline](#Headlines) object | Sets and styles the card’s headline. | See [headlines](#headlines) | `
-{ size: 'm', position: 'bottom', ornament: false, style: 'News’}` |
+| headline | [headline](#Headlines) object | Sets and styles the card’s headline. | See [headlines](#headlines) | `{ size: 'm', position: 'bottom', ornament: false, style: 'News’}` |
 | media | [media](#Media) object | Sets and styles the card’s media. | See [media](#media) | `{position: 'first', aspectRatio: 1.5}` |
 | orientation | string | Sets the card’s overall layout direction | `’vertical’` `’horizontal'` | `’vertical’` |
 | timestamp | timestamp integer in milliseconds | Dictates if the card should show a fuzzy timestamp (eg ’23 minutes ago’) | - | `false` |
