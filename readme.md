@@ -42,23 +42,93 @@ The `+(card)` component is the workhorse of this prototype. It uses the followin
 
 `+card(data, cardConfiguration)`
 
-Both `data` and `cardConfiguration` are objects that follow the following structure:
+Both `data` and `cardConfiguration` are objects that accept the following properties:
+
+| Property | Type | Description | Options | Default |
+| -- | -- | -- | -- |
+| actions | boolean | If `false,` the card won’t have actions (save, share, comment) | `true` `false` | `true` |
+| alignment | string | Sets the alignment for all text elements (flash line, headline, summary, and byline) | `’left'` `’right’` | `'left'` |
+| borders | [borders](#Borders) object | Styles the card’s borders. |  See [borders](#Borders) | `{ bottom: ‘light’ }`|
+| bullets | array of strings | Appends additional, related headlines to a card | - | `[]` |
+| byline | string | Sets the attribution after the card’s summary | - | `false` |
+| colorTheme | string | Sets a class that refers to color theme CSS. | `’standard’` `’inverted`’ | `’standard’` |
+| commentCount | integer | Sets the comment count to be displayed in the card’s actions. If `0`, no comment count is displayed. | - | 0 |
+| flashline | string | Sets the text that appears in the card’s flashline. | - | `false` |
+| headline | [headline](#Headlines) object | Sets and styles the card’s headline. | See [headlines](#Headlines) | `
+{ size: 'm', position: 'bottom', ornament: false, style: 'News’}` |
+| media | [media](#Media) object | Sets and styles the card’s media. | See [media](#Media) | `{position: 'first', aspectRatio: 1.5}` |
+| orientation | string | Sets the card’s overall layout direction | `’vertical’` `’horizontal'` | `’vertical’` |
+| timestamp | timestamp integer in milliseconds | Dictates if the card should show a fuzzy timestamp (eg ’23 minutes ago’) | - | `false` |
+| trending | boolean | Shows or hides the ‘trending’ element | `true` `false` | `false` |
+
+### Example
 
 ```js
 {
-    actions: boolean,
-    alignment: string,
-    borders: object,
-    bullets: array
-    colorTheme: string,
-    commentCount: integer,
-    flashline: string,
-    headline: object,
-    media: object,
-    orientation: string,
-    ornament: string,
-    timestamp: string,
-    trending : boolean,
-    rows: integer,
-}
+	actions: true,
+	alignment: ‘left’,
+	borders: {
+		bottom: ‘light’
+	},
+	bullets: [
+		‘An additional headline’
+	],
+	byline: ‘Matthew Strom’,
+	colorTheme: ‘standard’,
+	commentCount: 420,
+	flashline: 'Example',
+	headline: {
+		ornament: false,
+		position: 'bottom',
+		size: 'm',
+		style: 'News',
+		text: 'A Rad Example Card'
+	},
+	media: {
+		aspectRatio: 1.5,
+		caption: 'A really good caption',
+		credit: 'Matthew Strom',
+		position: 'first',
+		type: 'image',
+		url: 'http://placehold.it/300/400'
+	},
+	orientation: 'vertical',
+	timestamp: 1534630244000,
+	trending: false
 ```
+
+## Borders
+
+The borders object can be used in the `+card()` `+column()` `+row()` objects to set and style borders.
+
+| Property | Type | Description | Options |
+| -- | -- | -- | -- |
+| top | string | Sets and styles the top border | `’light'` `’heavy’` |
+| right | string | Sets and styles the right border | `’light'` `’heavy’` |
+| bottom | string | Sets and styles the bottom border | `’light'` `’heavy’` |
+| left | string | Sets and styles the bottom border | `’light'` `’heavy’` |
+
+## Headlines
+
+Headlines are set and styled with the following properties:
+
+| Property | Type | Description | Options |
+| -- | -- | -- | -- |
+| ornament | string | Adds additional elements to the headlines associated with elders and a-heds. | `’leder'` `’ahed'` |
+| position | string | For inlay-style headlines, changes where the headline appears over the image. This property has no effect on non-inlaid cards. | `’top'` `’bottom'` |
+| size | string | Sets the size of the headline | `’xl’` `’l’` `’m’` `’s'` |
+| style | string | Sets the font style of the headline | `’News’` `’Opinion’` `’Life`’ |
+| text | string | Sets the text of the headline | - |
+
+## Media
+
+Media is set and styled with the following properties:
+
+| Property | Type | Description | Options |
+| -- | -- | -- | -- |
+| aspectRatio | float | For images served from imageManager, and images used in an inlay-style card, sets the aspect ratio of the media. | - |
+| caption | string | Sets the text of the image’s caption | - |
+| credit | string | Sets the text of the media’s credit | - |
+| position | string | Dictates where in the card the image should appear. For cards with a vertical orientation, ‘left’ and ‘right’ have no effect. | `'first'` `’left'` `’middle'` `’right'` `’last'` `’behind'` |
+| type | string | enables different styling of the media based on type | `’image'` `’video`’ |
+
