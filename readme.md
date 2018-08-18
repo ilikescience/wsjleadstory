@@ -45,7 +45,7 @@ The `+(card)` component is the workhorse of this prototype. It uses the followin
 Both `data` and `cardConfiguration` are objects that accept the following properties:
 
 | Property | Type | Description | Options | Default |
-| -- | -- | -- | -- |
+| -- | -- | -- | -- | -- |
 | actions | boolean | If `false,` the card won’t have actions (save, share, comment) | `true` `false` | `true` |
 | alignment | string | Sets the alignment for all text elements (flash line, headline, summary, and byline) | `’left'` `’right’` | `'left'` |
 | borders | [borders](#Borders) object | Styles the card’s borders. |  See [borders](#Borders) | `{ bottom: ‘light’ }`|
