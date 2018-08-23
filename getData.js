@@ -60,7 +60,7 @@ fetch(url)
 
                     if (article.hasOwnProperty('bullets')) {
                         for (const item of article.bullets) {
-                            if (item.html[1].children.length > 0 && item.html[1].children[0].hasOwnProperty('text')) {
+                            if (item.html.length > 1 && item.html[1].children.length > 0 && item.html[1].children[0].hasOwnProperty('text')) {
                                 thisArticle.bullets.push(
                                     {
                                         title: item.html[1].children[0].text,

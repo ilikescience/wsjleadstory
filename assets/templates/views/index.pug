@@ -10,7 +10,7 @@ block content
     - var life = locals.articles.filter((article) => article.storyType === 'Life')
     .l--grid.l--margin-top-xl
         .l--grid-row
-            +strap('Spotlight Eight')
+            +strap('Spotlight Seven')
         .l--grid-row
             +column({
                 span: 3,
@@ -27,10 +27,10 @@ block content
             })
                 +card(locals.articles[0], {
                     headline: {
-                        size: 'xl',
+                        size: 'l',
                     },
-                    media: false,
-                    byline: false
+                    byline: false,
+                    media: false
                 })
             
             +column({span: 5})
@@ -38,14 +38,14 @@ block content
                     headline: {
                         size: 'l',
                     },
-                    byline: false
+                    byline: false,
                 })
                 +card(locals.articles[5], {
                     headline: {
                         size: 'l',
                     },
-                    media: false,
-                    byline: false
+                    byline: false,
+                    media: false
                 })
                 +card(locals.articles[6], {
                     media: false,
@@ -54,19 +54,23 @@ block content
                 })
 
             +column({
-                span: 2,
+                span: 3,
                 borders: {
                     left: 'light'
                 },
                  repeat: {
-                    data: locals.articles.slice(7,12),
+                    data: locals.articles.slice(7,11),
                     cardConfig: {
                         summary: false,
                         byline: false,
                         timestamp: false,
                         borders: false,
                         bullets: false,
-                        actions: false
+                        actions: false,
+                        media: {
+                            caption: false,
+                            credit: false
+                        }
                     }
                 }
             })
@@ -283,8 +287,9 @@ block content
                         size: 'l',
                     },
                     media: {
-                        type: 'video',
-                        position: 'behind'
+                        iconType: 'play',
+                        position: 'behind',
+                        iconPosition: 'lowerLeft',
                     },
                     colorTheme: 'inverted',
                     borders: false,
@@ -294,7 +299,7 @@ block content
             +column()
                 +card(locals.articles[10], {
                     media: {
-                        type: 'video'
+                        iconType: 'play'
                     },
                     actions: false
                 })
@@ -314,7 +319,8 @@ block content
                         colorTheme: 'inverted',
                         borders: false,
                         media: {
-                            type: 'video',
+                            iconType: 'play',
+                            iconPosition: 'lowerLeft',
                             position: 'behind'
                         },
                         bullets: false
@@ -328,7 +334,7 @@ block content
                             actions: false,
                             orientation: 'horizontal',
                             media: {
-                                type: 'video',
+                                iconType: 'play',
                             },
                             summary: false,
                             byline: false,

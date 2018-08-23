@@ -8,12 +8,25 @@ mixin media(mediaObject, params)
                 aspectRatio: 1.5,
                 caption: '',
                 credit: '',
-                type: 'image',
+                iconType: 'none',
+                iconPosition: 'center',
                 position: 'first'
             }
         , mediaObject, params || ''])
-    .card--media(class=`card--media-${media.type} card--media-placement-${media.position}`)
-        if (media.type === 'video')
-            .card--media-icon
-                +icon('play')
-        img(src=media.url class=`${media.position === 'behind' ? 'l--visuallyhidden' : ''}`)
+        var parsedURL = media.url.match(/:\/\/(www[0-9]?\.)?(.[^/:]+)/i);
+        var hostName = false;
+        if (parsedURL != null && parsedURL.length >= 2 && typeof parsedURL[2] === 'string' && parsedURL[2].length > 0) {
+            hostName = parsedURL[2];
+        }
+        var isImageManager = (hostName === 'images.wsj.net');
+    .card--media(class=` card--media-position-${media.position}`)
+        if (media.iconType !== 'none')
+            .card--media-icon(class=`card--media-icon-type-${media.iconType} card--media-icon-position-${media.iconPosition}`)
+                +icon(media.iconType)
+        img(src=`${media.url}${isImageManager ? `?aspect_ratio=${media.aspectRatio}` : ''}` class=`${media.position === 'behind' ? 'l--visuallyhidden' : ''}`)
+        if (media.caption || media.credit)
+            .card--media-caption
+                if (media.caption)
+                    .card--media-caption-text= media.caption
+                if (media.credit)
+                    .card--media-caption-credit= media.credit
