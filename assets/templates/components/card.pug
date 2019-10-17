@@ -43,7 +43,6 @@ mixin card(inputData, cardConfiguration)
     .card(
         class=`
             card--theme-${data.colorTheme}
-            card--${data.size}
             card--${data.orientation}
             card--position-${data.media.position}
             card--${data.actions ? 'has-actions' : 'no-actions'}
@@ -68,7 +67,7 @@ mixin card(inputData, cardConfiguration)
                 +headline(data.headline)
                 if data.summary
                     .card--summary.t--family-serif.t--size-s.l--margin-bottom-s #{data.summary}
-                if data.byline || timestamp
+                if data.byline
                     .card--byline.t--family-sansCondensed.t--size-s.t--weight-light
                         if data.byline
                             if data.avatar
