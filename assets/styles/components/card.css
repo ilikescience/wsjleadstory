@@ -52,13 +52,13 @@
 }
 
 .card--vertical {
-    &.card--placement-first {
+    &.card--position-first {
         & .card--media {
             margin-bottom: var(--l--space-m);
         }
     }
 
-    &.card--placement-last {
+    &.card--position-last {
         & .card--media {
             margin-top: var(--l--space-m);
         }

@@ -32,7 +32,7 @@ block content
                     media: false,
                     byline: false
                 })
-            
+
             +column({span: 5})
                 +card(locals.articles[4], {
                     headline: {
@@ -58,16 +58,16 @@ block content
                 borders: {
                     left: 'light'
                 },
-                 repeat: {
-                    data: locals.articles.slice(7,12),
-                    cardConfig: {
-                        summary: false,
-                        byline: false,
-                        timestamp: false,
-                        borders: false,
-                        bullets: false,
-                        actions: false
-                    }
+                    repeat: {
+                        data: locals.articles.slice(7,12),
+                        cardConfig: {
+                            summary: false,
+                            byline: false,
+                            timestamp: false,
+                            borders: false,
+                            bullets: false,
+                            actions: false
+                        }
                 }
             })
 
@@ -76,7 +76,7 @@ block content
             +strap('Package')
         .l--grid-row
             +column()
-                +card(locals.articles[6], {
+                +card(locals.articles[0], {
                     orientation: 'horizontal',
                     headline: {
                         size: 'l',
@@ -152,6 +152,14 @@ block content
                         bottom: 'heavy'
                     }
                 })
+                +card(business[1], {
+                    actions: false,
+                    byline: false,
+                    media: false,
+                    headline: {
+                        size: 'm',
+                    }
+                })
     .l--grid.l--margin-top-xl
         .l--grid-row
             +strap('Business')
@@ -195,20 +203,31 @@ block content
                     headline: {
                         size: 'l',
                         ornament: 'ahed',
+                        text: 'The Empty Toilet Paper Roll Torments Families. Procter & Gamble Has an Answer.'
                     },
                     flashline: false,
                     media: {
-                        url: 'https://cl.ly/02452G19400z/Screen%20Shot%202018-08-13%20at%2012.02.15%20PM.png',
+                        url: 'https://si.wsj.net/public/resources/images/HC-GX416_Paper__G_20191016101019.jpg',
                         position: 'last'
-                        }
+                        },
+                    summary: 'For decades, companies have tried to ease the chore of changing roles by rolling out ever-larger sizes. Now it isn’t clear what the limit is; ‘I would buy it if it lasted a year’'
                 })
             +column({span: 4})
                 +card(life[1], {
                     headline: {
                         size: 'xl',
-                        ornament: 'leder'
+                        ornament: 'leder',
+                        text: 'Inside Facebook’s Botched Attempt to Start a New Cryptocurrency'
                     },
+                    media: {
+                        url: 'https://images.wsj.net/im-117201/IM'
+                    },
+                    summary: 'With libra, the social-media giant promised to change payments world-wide. Instead, major partners bolted after lawmakers and regulators challenged its plans, an early sign of how Washington is putting Facebook on a tight leash.',
                     textAlignment: 'center',
+                    flashline: 'Markets',
+                    bullets: [
+                        {"title":"Mastercard, Visa, eBay Drop Out of Payments Network","type":"story"}
+                    ]
                 })
     .l--grid.l--margin-top-xl
         .l--grid-row
