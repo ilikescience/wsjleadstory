@@ -12,7 +12,7 @@
   "dependencies": {
     "browser-sync": "^2.24.6",
     "deepmerge": "^2.1.1",
-    "ecstatic": "^3.2.0",
+    "ecstatic": "^4.1.4",
     "gulp": "^3.9.1",
     "gulp-filter": "^5.1.0",
     "gulp-help": "^1.6.1",
